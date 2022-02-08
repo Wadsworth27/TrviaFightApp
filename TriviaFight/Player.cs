@@ -12,13 +12,13 @@ namespace TriviaFight
         public string Name { get; set; } = "Player";
 
 
-        public string AnswerQuestion()
+        public int AnswerQuestion()
         {
             Console.WriteLine("What is you answer?: ");
             string answer = Console.ReadLine().ToUpper();
-            if (answer == "A" | answer == "B" | answer == "C")
+            if (answer == "1" | answer == "2" | answer == "3" | answer == "4")
             {
-                return answer;
+                return int.Parse(answer);
             }
             else
                 {

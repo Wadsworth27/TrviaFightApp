@@ -1441,6 +1441,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "APiHandler/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.7"
+        },
+        "compile": {
+          "bin/placeholder/APiHandler.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/APiHandler.dll": {}
+        }
       }
     }
   },
@@ -5272,10 +5285,16 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "APiHandler/1.0.0": {
+      "type": "project",
+      "path": "../APiHandler/APiHandler.csproj",
+      "msbuildProject": "../APiHandler/APiHandler.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "APiHandler >= 1.0.0",
       "Microsoft.AspNet.WebApi.Client >= 5.2.7"
     ]
   },
@@ -5286,11 +5305,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj",
-      "projectName": "APiHandler",
-      "projectPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj",
+      "projectUniqueName": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\TriviaFight\\TriviaFight.csproj",
+      "projectName": "TriviaFight",
+      "projectPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\TriviaFight\\TriviaFight.csproj",
       "packagesPath": "C:\\Users\\stwad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\obj\\",
+      "outputPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\TriviaFight\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5310,7 +5329,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj": {
+              "projectPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

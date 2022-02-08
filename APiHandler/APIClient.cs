@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace APiHandler
 {
+    
     public class APIClient
     {
         public static HttpClient apiclient { get; set; }= new HttpClient();

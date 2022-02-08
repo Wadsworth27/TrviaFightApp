@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\stwad\\Documents\\GitHub\\APiHandler\\APiHandler.csproj": {}
+    "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj": {}
   },
   "projects": {
-    "C:\\Users\\stwad\\Documents\\GitHub\\APiHandler\\APiHandler.csproj": {
+    "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\stwad\\Documents\\GitHub\\APiHandler\\APiHandler.csproj",
+        "projectUniqueName": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj",
         "projectName": "APiHandler",
-        "projectPath": "C:\\Users\\stwad\\Documents\\GitHub\\APiHandler\\APiHandler.csproj",
+        "projectPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj",
         "packagesPath": "C:\\Users\\stwad\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\stwad\\Documents\\GitHub\\APiHandler\\obj\\",
+        "outputPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

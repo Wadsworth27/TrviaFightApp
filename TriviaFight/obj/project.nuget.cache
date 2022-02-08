@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/cgv2GhkAdho8vNXa5AkWEMXIl2FuZAVUy0h2yLp1OBjXh53QEvcenDbhQsZrXGqSqvzCkKwifJMZA9Gedoh0Q==",
+  "dgSpecHash": "41hwkuafNtmnTHEXGzhd7b1MRhgwXJcrn3c9ZbMcrtky0FRYy8VdIsxXrhoBskKKOe7Q/z4cIcVDTcZp3FiUvA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj",
+  "projectFilePath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\TriviaFight\\TriviaFight.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stwad\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\stwad\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
