@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaFight
+﻿namespace TriviaFight
 {
     public class Player
     {
 
         public string Name { get; set; } = "Player";
+        public int QuestionsAsked { get; set; }
+        public int QuestionsCorrect { get; set; }
 
 
         public int AnswerQuestion()
@@ -21,10 +17,10 @@ namespace TriviaFight
                 return int.Parse(answer);
             }
             else
-                {
+            {
                 Console.WriteLine("Invalid Input, please try again");
                 return AnswerQuestion();
-                }
+            }
 
 
         }

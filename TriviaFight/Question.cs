@@ -1,9 +1,4 @@
 ﻿using APiHandler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TriviaFight
 {
@@ -29,17 +24,13 @@ namespace TriviaFight
             List<string> possibleAnswers = new List<string>(this.incorrectAnswers);
             int index = random.Next(0, this.incorrectAnswers.Count + 1);
             possibleAnswers.Insert(index, this.correctAnswer);
-            for (int i = 0; i < possibleAnswers.Count; i++)
-            {
-                possibleAnswers[i] = $"{i + 1}: {possibleAnswers[i]}";
-            }
             return possibleAnswers;
         }
         private bool CorrectAnswer(string answer)
         {
-            return answer.Contains(correctAnswer);
+            return answer==correctAnswer;
         }
-        public bool CheckAnswer(List<string> answers,int answer)
+        public bool CheckAnswer(List<string> answers, int answer)
         {
             int v = answers.FindIndex(CorrectAnswer);
             return v == answer - 1;

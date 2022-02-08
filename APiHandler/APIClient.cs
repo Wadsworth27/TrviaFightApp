@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http.Headers;
 
 namespace APiHandler
 {
-    
+
     public class APIClient
     {
-        public static HttpClient apiclient { get; set; }= new HttpClient();
+        public static HttpClient apiclient { get; set; } = new HttpClient();
         public static void initializeClient()
         {
             apiclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -18,9 +13,9 @@ namespace APiHandler
         }
         public static async Task<QuestionResultsModel> GetQuestionsAsync(string url)
         {
-            QuestionResultsModel results; 
+            QuestionResultsModel results;
             HttpResponseMessage response = await apiclient.GetAsync(url);
-            results = await response.Content.ReadAsAsync<QuestionResultsModel>() ;
+            results = await response.Content.ReadAsAsync<QuestionResultsModel>();
             return results;
 
         }
