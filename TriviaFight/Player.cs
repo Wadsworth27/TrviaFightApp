@@ -4,7 +4,7 @@
     {
 
         public string Name { get; set; } = "Player";
-        public int Hitpoints { get; set; } = 25;
+        public int Hitpoints { get; set; } = 1;
         public int DamagePotential { get; set; } = 5;
 
         public int AnswerQuestion()

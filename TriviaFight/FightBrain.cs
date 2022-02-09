@@ -63,7 +63,6 @@ namespace TriviaFight
                     Console.WriteLine($"Player Hitpoints : {player.Hitpoints}\nEnemy Hitpoints: {enemy.HitPoints}\n\nHit any key to continue");
                     string? _ = Console.ReadLine();
                     Console.Clear();
-
                 }
             }
             Console.WriteLine("Thanks for Playing!");
