@@ -19,13 +19,6 @@ namespace APiHandler
             return results;
 
         }
-        public static async Task<String> GetQuoteAsync(string url)
-        {
-            HttpResponseMessage response = await apiclient.GetAsync(url);
-            KanyeModel results = await response.Content.ReadAsAsync<KanyeModel>();
-            return results.Quote;
-
-        }
 
 
     }

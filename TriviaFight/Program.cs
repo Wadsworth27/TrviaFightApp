@@ -4,12 +4,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        APIClient.initializeClient();
-        QuestionResultsModel QuestionModels = APIClient.GetQuestionsAsync("https://opentdb.com/api.php?amount=10&type=multiple").GetAwaiter().GetResult();
-        QuestionSet questionSet = new QuestionSet(QuestionModels.Results);
         Player steve = new();
+        Enemy enemy = new(25,5);
         QuizBrain quizBrain = new QuizBrain();
-        quizBrain.PlayGame(questionSet,steve);
+        FightBrain fightBrain = new();
+        fightBrain.PlayGame(steve, enemy);
+
+        //quizBrain.PlayGame(steve);
 
      }
 

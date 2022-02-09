@@ -1,4 +1,6 @@
-﻿namespace TriviaFight
+﻿using APiHandler;
+
+namespace TriviaFight
 {
     public class QuizBrain
     {
@@ -9,9 +11,16 @@
         public QuizBrain()
         {
         }
-
-        public void PlayGame(QuestionSet questionSet, Player player)
+        public virtual QuestionSet GetQuestions()
         {
+            APIClient.initializeClient();
+            QuestionResultsModel QuestionModels = APIClient.GetQuestionsAsync("https://opentdb.com/api.php?amount=10&type=multiple").GetAwaiter().GetResult();
+            QuestionSet questionSet = new QuestionSet(QuestionModels.Results);
+            return questionSet;
+        }
+        public virtual void PlayGame(Player player)
+        {
+            QuestionSet questionSet = this.GetQuestions();
             foreach (Question question in questionSet.Questions)
             {
                 Console.WriteLine(question + "\n");

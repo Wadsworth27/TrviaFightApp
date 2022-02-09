@@ -4,9 +4,8 @@
     {
 
         public string Name { get; set; } = "Player";
-        public int QuestionsAsked { get; set; }
-        public int QuestionsCorrect { get; set; }
-
+        public int Hitpoints { get; set; } = 25;
+        public int DamagePotential { get; set; } = 5;
 
         public int AnswerQuestion()
         {
@@ -21,8 +20,12 @@
                 Console.WriteLine("Invalid Input, please try again");
                 return AnswerQuestion();
             }
+        }
 
-
+        public int DoDamage()
+            {
+                Random random = new();
+                return random.Next(this.DamagePotential);
+            }
         }
     }
-}
