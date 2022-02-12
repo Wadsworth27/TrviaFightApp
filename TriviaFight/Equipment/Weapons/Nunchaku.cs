@@ -102,6 +102,10 @@ namespace TriviaFight.Equipment.Weapons
         {
             return "Power up your nunchucks while delivering a devistating double attack!";
         }
+        public override void Reset()
+        {
+            damagePotential = 1;
+        }
     }
 }
 

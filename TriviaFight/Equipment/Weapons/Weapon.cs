@@ -13,6 +13,10 @@ namespace TriviaFight
         public int DamagePotential;
         public int SpecialMeter;
         public int SpecialChargeRate;
+        public virtual void Reset()
+        {
+
+        }
         
     }
 }

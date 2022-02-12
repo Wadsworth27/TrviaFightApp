@@ -16,5 +16,6 @@ namespace TriviaFight.Equipment
         public int GetSpecialChargeRate();
         public void UseSpecial();
         public string GetSpecialAttackDescription();
+        public void Reset();
     }
 }

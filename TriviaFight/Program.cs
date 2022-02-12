@@ -7,20 +7,27 @@ class Program
 {
     static void Main(string[] args)
     {
-        MainMenu.DisplayHomesceen();
         Player player;
+        MainMenu.DisplayHomesceen();
         string NeworLoad = MainMenu.NewOrLoadGame();
         
         if (NeworLoad =="new")
         {
-            player = MainMenu.StartNewGame();
+           player = MainMenu.StartNewGame();
         }
         else
         {
             player = MainMenu.StartNewGame();
             //some load code here
         }
-        player.ChooseWeapon();
+        bool gameon = true;
+        while(gameon)
+        {
+            MainMenu.GameHandler(MainMenu.Menu(),player);
+        }
+        
+        
+
         /*Player steve = new();
         Nunchaku nun = new();
         RustySpoon rusty = new();

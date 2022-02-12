@@ -1,4 +1,5 @@
 ﻿using TriviaFight.Equipment;
+using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
@@ -16,7 +17,9 @@ namespace TriviaFight
         {
             Name = name;
             RustySpoon spoon = new();
+            Nunchaku nc = new();
             WeaponList.Add(spoon);
+            WeaponList.Add(nc);
             Weapon=spoon;
 
         }
@@ -113,6 +116,10 @@ namespace TriviaFight
         public override string ToString()
         {
             return this.Name;
+        }
+        public void Heal()
+        {
+            Hitpoints = MaxHitpoints;
         }
 
     }
