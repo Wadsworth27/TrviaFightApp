@@ -53,12 +53,12 @@ namespace TriviaFight
                 name = Console.ReadLine();
             }
             Player player = new Player(name);
+            Console.Clear();
             return player;
 
         }
         public static int Menu()
         {
-            Console.Clear();
             Console.WriteLine("Choose your game mode:\n\n" +
                 "1. Challenge a category master. Defeat all masters to become the ultimate champion!\n"+
                 "2. Trivia Challenge - 10 question general knowledge trivia. Earn weapons and items!\n" +
@@ -79,6 +79,7 @@ namespace TriviaFight
         }
         public static void GameHandler(int choice, Player player)
         {
+            Console.Clear();
             switch(choice)
             {
                 case 1:
