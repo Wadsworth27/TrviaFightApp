@@ -53,7 +53,7 @@ namespace TriviaFight.Equipment.Weapons
                     break;
                 }
             }
-            Console.WriteLine($"You did {total} points of damage over {hits} hits with {this.Name}!");
+            Console.WriteLine($"\nYou did {total} points of damage over {hits} hits with {this.Name}!");
             enemy.HitPoints -= total;
         }
         public void Defend(Player player)
@@ -77,7 +77,7 @@ namespace TriviaFight.Equipment.Weapons
                     break;
                 }
             }
-            Console.WriteLine($"You healed for {total} points of damage over {hits} forms!");
+            Console.WriteLine($"\nYou healed for {total} points of damage over {hits} forms!");
             player.Hitpoints = Math.Min(player.MaxHitpoints, player.Hitpoints + total);
         }
         public int GetSpecialChargeRate()
@@ -105,6 +105,10 @@ namespace TriviaFight.Equipment.Weapons
         public override void Reset()
         {
             damagePotential = 1;
+        }
+        public string GetName()
+        {
+            return Name;
         }
     }
 }

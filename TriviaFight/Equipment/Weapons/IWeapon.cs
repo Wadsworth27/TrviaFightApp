@@ -17,5 +17,6 @@ namespace TriviaFight.Equipment
         public void UseSpecial();
         public string GetSpecialAttackDescription();
         public void Reset();
+        public string GetName();
     }
 }

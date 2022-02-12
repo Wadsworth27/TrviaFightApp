@@ -23,6 +23,7 @@ class Program
         bool gameon = true;
         while(gameon)
         {
+            player.DisplayInfo();
             MainMenu.GameHandler(MainMenu.Menu(),player);
         }
         

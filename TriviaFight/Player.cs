@@ -9,6 +9,7 @@ namespace TriviaFight
         public string Name { get; set; } = "Steve";
         public int MaxHitpoints { get; set; } = 25;
         public int Hitpoints { get; set; } = 25;
+        public int Level { get; set; } = 1;
         public IWeapon Weapon { get; set; } = null;
         public List<IWeapon> WeaponList = new List<IWeapon>();
         public bool Blocking { get; set; } = false; 
@@ -17,9 +18,7 @@ namespace TriviaFight
         {
             Name = name;
             RustySpoon spoon = new();
-            Nunchaku nc = new();
             WeaponList.Add(spoon);
-            WeaponList.Add(nc);
             Weapon=spoon;
 
         }
@@ -27,7 +26,7 @@ namespace TriviaFight
         public int AnswerQuestion()
         {
             Console.WriteLine("What is you answer?: ");
-            string? answer = Console.ReadLine().ToUpper();
+            string? answer = Console.ReadLine();
             if (answer == "1" | answer == "2" | answer == "3" | answer == "4")
             {
                 return int.Parse(answer);
@@ -90,6 +89,7 @@ namespace TriviaFight
         }
         public void ChooseWeapon()
         {
+            Console.WriteLine("Choose your Weapon!\n\n");
             for (int i = 0; i < WeaponList.Count; i++)
             {
                 Console.WriteLine($"{i + 1}: {this.WeaponList[i]}\n");
@@ -120,6 +120,10 @@ namespace TriviaFight
         public void Heal()
         {
             Hitpoints = MaxHitpoints;
+        }
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"Player Name : {Name}\n\nLevel : {Level}\nHitpoints : {MaxHitpoints}\nWeapon : {Weapon}\n\n\n");
         }
 
     }

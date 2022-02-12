@@ -24,27 +24,15 @@ namespace TriviaFight
                     Console.WriteLine($"Mode: {mode}\n\n");
                     List<string> possibleAnswers = new List<string>();
                     AskQuestion(question, out possibleAnswers);
-
+                    
                     if (question.CheckAnswer(possibleAnswers, player.AnswerQuestion()))
                     {
-                        switch (mode)
-                        {
-                            case "Attack":
-                                player.Weapon.Attack(enemy);
-                                break;
-                            case "Defense":
-                                player.Weapon.Defend(player);
-                                break;
-                            case "Special":
-                                player.Weapon.SpecialAttack(player, enemy);
-                                break;
-                            default:
-                                break;
-                        }
+                        AnswerSuccess(mode, player, enemy);
                         if (enemy.HitPoints <= 0)
                         {
                             Console.WriteLine("You have defeated the enemy!");
                             gameon = false;
+                            enemy.DropLoot(player);
                             break;
                         }
                     }
@@ -65,7 +53,9 @@ namespace TriviaFight
                     Console.Clear();
                 }
             }
-            Console.WriteLine("Thanks for Playing!");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
         }
         public static void AskQuestion(Question question, out List<string> possibleAnswers)
         {
@@ -76,6 +66,23 @@ namespace TriviaFight
             {
                 Console.WriteLine($"{answerLocation}: {answer}\n".Replace("&quot;", "\"").Replace("&#039;", "'").Replace("&amp;", "&"));
                 answerLocation += 1;
+            }
+        }
+        public static void AnswerSuccess(string mode,Player player,Enemy enemy)
+        {
+            switch (mode)
+            {
+                case "Attack":
+                    player.Weapon.Attack(enemy);
+                    break;
+                case "Defense":
+                    player.Weapon.Defend(player);
+                    break;
+                case "Special":
+                    player.Weapon.SpecialAttack(player, enemy);
+                    break;
+                default:
+                    break;
             }
         }
     }

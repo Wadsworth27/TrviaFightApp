@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TriviaFight.Equipment;
+using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
@@ -12,7 +14,7 @@ namespace TriviaFight
         public string Name { get; set; } = "Enemy";
         public int HitPoints { get; set; }
         public int DamagePotential { get; set; }
-        public int HitPercentage { get; set; } = 25;
+        public int HitPercentage { get; set; } = 0;
 
         public Enemy(int hitpoints,int damage)
         {
@@ -43,6 +45,26 @@ namespace TriviaFight
                 {
                     Console.WriteLine("Enemy Missed!");
                 }
+            }
+        }
+        public virtual void DropLoot(Player player)
+        {
+            Nunchaku nc = new();
+            Console.WriteLine("Weapon found!");
+            bool existing = false;
+            foreach (IWeapon weapon in player.WeaponList)
+            {
+                if (weapon.GetName()==nc.Name)
+                {
+                    existing = true;
+                }
+            }
+            if (existing)
+            {
+                Console.WriteLine($"You already have {nc}");
+            } else
+            {
+                player.AddWeapon(nc);
             }
         }
     }

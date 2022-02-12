@@ -60,7 +60,10 @@ namespace TriviaFight.Equipment
         {
             this.specialMeter = 0;
         }
-
+        public string GetName()
+        {
+            return Name;
+        }
         public string GetSpecialAttackDescription()
         {
             return "Heal player by up to 5 points while doing 5 points of damage to enemy";
