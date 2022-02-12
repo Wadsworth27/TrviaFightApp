@@ -8,9 +8,10 @@ namespace TriviaFight.Equipment
 {
     public interface IWeapon
     {
-        public int DoDamage();
+        public void Attack(Enemy enemy);
+        public void Defend(Player player);
         public void ChargeSpecial(int charge);
-        public int SpecialAttack(Player player);
+        public void SpecialAttack(Player player, Enemy enemy);
         public int GetSpecialCharge();
         public int GetSpecialChargeRate();
         public void UseSpecial();

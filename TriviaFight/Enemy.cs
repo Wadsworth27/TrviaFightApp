@@ -24,16 +24,25 @@ namespace TriviaFight
         {
             return random.Next(this.DamagePotential+1);
         }
-        public int Attack()
+        public virtual void Attack(Player player)
         {
-            
-            if (random.Next(100)<this.HitPercentage)
+            if (player.Blocking == true)
             {
-                return DoDamage();
-
-            } else
+                Console.WriteLine("Enemy Attack Blocked!!\n");
+                player.Blocking = false;
+            }
+            else
             {
-                return 0;
+                if (random.Next(100) <= this.HitPercentage)
+                {
+                    int damage = random.Next(1,this.DamagePotential);
+                    player.Hitpoints-=damage;
+                    Console.WriteLine($"Enemy hit {player} for {damage} points of damage!");
+                }
+                else
+                {
+                    Console.WriteLine("Enemy Missed!");
+                }
             }
         }
     }

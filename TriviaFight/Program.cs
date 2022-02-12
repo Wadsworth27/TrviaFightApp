@@ -1,5 +1,6 @@
 ﻿using APiHandler;
 using TriviaFight.Equipment;
+using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight;
 class Program
@@ -7,14 +8,14 @@ class Program
     static void Main(string[] args)
     {
         Player steve = new();
-        IWeapon spoon = new RustySpoon();
-        steve.EquipWeapon(spoon);
+        Nunchaku nun = new();
+        RustySpoon rusty = new();
+        steve.AddWeapon(nun);
+        steve.AddWeapon(rusty);
+        steve.ChooseWeapon();
         Enemy enemy = new(25,5);
-        QuizBrain quizBrain = new QuizBrain();
         FightBrain fightBrain = new();
         fightBrain.PlayGame(steve, enemy);
-
-        //quizBrain.PlayGame(steve);
 
      }
 

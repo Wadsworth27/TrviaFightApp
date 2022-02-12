@@ -30,13 +30,13 @@ namespace TriviaFight
                         switch (mode)
                         {
                             case "Attack":
-                                AttackSuccess(player,enemy);
+                                player.Weapon.Attack(enemy);
                                 break;
                             case "Defense":
-                                DefenseSuccess(player);
+                                player.Weapon.Defend(player);
                                 break;
                             case "Special":
-                                SpecialSuccess(player,enemy);
+                                player.Weapon.SpecialAttack(player, enemy);
                                 break;
                             default:
                                 break;
@@ -50,10 +50,9 @@ namespace TriviaFight
                     }
                     else
                     {
-                        this.QuestionsAsked += 1;
-                        Console.WriteLine($"Not Quite, correct answer was {question.correctAnswer}");
+                        Console.WriteLine($"Not Quite, correct answer was {question.correctAnswer}\n");
                     }
-                    EnemyTurn(player, enemy);
+                    enemy.Attack(player);
 
                     if (player.Hitpoints <= 0)
                     {
@@ -79,47 +78,7 @@ namespace TriviaFight
                 answerLocation += 1;
             }
         }
-        public static void AttackSuccess(Player player, Enemy enemy)
-            {
-                int damage = player.Weapon.DoDamage();
-                enemy.HitPoints -= damage;
-                Console.WriteLine($"You did {damage} points of damage with {player.Weapon}!");
-            }
-        public static void DefenseSuccess(Player player)
-        {
-            player.Blocking = true;
-            player.Weapon.ChargeSpecial(player.Weapon.GetSpecialChargeRate());
-        }
-        public static void SpecialSuccess(Player player, Enemy enemy)
-        {
-            int damage= player.Weapon.SpecialAttack(player);
-            enemy.HitPoints-= damage;
-            Console.WriteLine($"You did {damage} points of damage with {player.Weapon}!\n");
-        }
-        public static void EnemyTurn (Player player, Enemy enemy)
-        {
-            if (player.Blocking == true)
-            {
-                Console.WriteLine("Enemy Attack Blocked!!\n");
-                player.Blocking = false;
-            }
-            else
-            {
-                int attack = enemy.Attack();
-                if (attack == 0)
-                {
-                    Console.WriteLine("Enemy Missed!");
-                }
-                else
-                {
-                    Console.WriteLine($"Enemy hit for {attack}");
-                    player.Hitpoints -= attack;
-                }
-            }
-
-        }
-        
-            
-        }
     }
+}
+
 

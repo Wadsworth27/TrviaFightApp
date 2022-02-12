@@ -5,15 +5,18 @@ namespace TriviaFight
     public class Player
     {
 
-        public string Name { get; set; } = "Player";
+        public string Name { get; set; } = "Steve";
         public int MaxHitpoints { get; set; } = 25;
         public int Hitpoints { get; set; } = 25;
         public IWeapon Weapon { get; set; } = null;
+        public List<IWeapon> WeaponList = new List<IWeapon>();
         public bool Blocking { get; set; } = false; 
+        
+        
         public int AnswerQuestion()
         {
             Console.WriteLine("What is you answer?: ");
-            string answer = Console.ReadLine().ToUpper();
+            string? answer = Console.ReadLine().ToUpper();
             if (answer == "1" | answer == "2" | answer == "3" | answer == "4")
             {
                 return int.Parse(answer);
@@ -46,18 +49,22 @@ namespace TriviaFight
                 switch (response)
                 {
                     case "1":
+                        Console.Clear();
                         return "Attack";
                     case "2":
+                        Console.Clear();
                         return "Defense";
                     case "3":
                         if (specialAvalible)
                         {
+                            Console.Clear();
                             return "Special";
                         }
                         break;
                     default:
                         break;
                 }
+                Console.Clear();
                 Console.WriteLine("Invalid Input");
             }
 
@@ -66,6 +73,39 @@ namespace TriviaFight
             {
                 this.Weapon = w;
             }
-
+        public void AddWeapon(IWeapon w)
+        {
+            WeaponList.Add(w);
         }
+        public void ChooseWeapon()
+        {
+            for (int i = 0; i < WeaponList.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}: {this.WeaponList[i]}\n");
+            }
+            int choice;
+            if (Int32.TryParse(Console.ReadLine(), out choice))
+            {
+                if (choice < WeaponList.Count)
+                {
+                    this.EquipWeapon(WeaponList[choice-1]);
+                }
+                else
+                {
+                    ChooseWeapon();
+                }
+            } else
+            {
+                ChooseWeapon();
+            }
+            Console.WriteLine($"{ this.Weapon} Equiped!\n\nPress any Key to continue.");
+            string? _ = Console.ReadLine();
+            Console.Clear();
+        }
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
+    }
     }

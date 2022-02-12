@@ -19,21 +19,29 @@ namespace TriviaFight.Equipment
         {
             get { return specialMeter; }
         } 
-        public int SpecialAttack(Player player)
+        public void SpecialAttack(Player player, Enemy enemy)
         {
             player.Hitpoints = Math.Min(player.Hitpoints+5, player.MaxHitpoints);
             Console.WriteLine($"{player} Healed to {player.Hitpoints}/{player.MaxHitpoints}");
-            return this.DamagePotential;
+            enemy.HitPoints-= this.DamagePotential;
+            Console.WriteLine($"You did {this.DamagePotential} points of damage with {this.Name}!");
         }
         public void ChargeSpecial(int charge)
         {
 
             this.specialMeter += charge;
         }
-        public int DoDamage()
+        public void Attack(Enemy enemy)
         {
             Random random = new();
-            return random.Next(this.DamagePotential);
+            int damage = random.Next(1, this.DamagePotential+1);
+            Console.WriteLine($"You did {damage} points of damage with {this.Name}!");
+            enemy.HitPoints -= damage;
+        }
+        public void Defend(Player player)
+        {
+            player.Blocking = true;
+            player.Weapon.ChargeSpecial(player.Weapon.GetSpecialChargeRate());
         }
         public int GetSpecialChargeRate()
         {
