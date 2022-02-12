@@ -11,10 +11,10 @@ namespace TriviaFight
         public QuizBrain()
         {
         }
-        public virtual QuestionSet GetQuestions()
+        public virtual QuestionSet GetQuestions(string url="https://opentdb.com/api.php?amount=10&type=multiple")
         {
             APIClient.initializeClient();
-            QuestionResultsModel QuestionModels = APIClient.GetQuestionsAsync("https://opentdb.com/api.php?amount=10&type=multiple").GetAwaiter().GetResult();
+            QuestionResultsModel QuestionModels = APIClient.GetQuestionsAsync(url).GetAwaiter().GetResult();
             QuestionSet questionSet = new QuestionSet(QuestionModels.Results);
             return questionSet;
         }

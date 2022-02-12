@@ -12,6 +12,14 @@ namespace TriviaFight
         public List<IWeapon> WeaponList = new List<IWeapon>();
         public bool Blocking { get; set; } = false; 
         
+        public Player(string name)
+        {
+            Name = name;
+            RustySpoon spoon = new();
+            WeaponList.Add(spoon);
+            Weapon=spoon;
+
+        }
         
         public int AnswerQuestion()
         {
@@ -86,7 +94,7 @@ namespace TriviaFight
             int choice;
             if (Int32.TryParse(Console.ReadLine(), out choice))
             {
-                if (choice < WeaponList.Count)
+                if (choice <= WeaponList.Count)
                 {
                     this.EquipWeapon(WeaponList[choice-1]);
                 }

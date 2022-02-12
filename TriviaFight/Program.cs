@@ -7,7 +7,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        Player steve = new();
+        MainMenu.DisplayHomesceen();
+        Player player;
+        string NeworLoad = MainMenu.NewOrLoadGame();
+        
+        if (NeworLoad =="new")
+        {
+            player = MainMenu.StartNewGame();
+        }
+        else
+        {
+            player = MainMenu.StartNewGame();
+            //some load code here
+        }
+        player.ChooseWeapon();
+        /*Player steve = new();
         Nunchaku nun = new();
         RustySpoon rusty = new();
         steve.AddWeapon(nun);
@@ -16,7 +30,7 @@ class Program
         Enemy enemy = new(25,5);
         FightBrain fightBrain = new();
         fightBrain.PlayGame(steve, enemy);
-
+        */
      }
 
 
