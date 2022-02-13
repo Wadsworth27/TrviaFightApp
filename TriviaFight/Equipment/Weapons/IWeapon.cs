@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaFight.Equipment
+﻿namespace TriviaFight.Equipment
 {
     public interface IWeapon
     {
@@ -18,5 +12,6 @@ namespace TriviaFight.Equipment
         public string GetSpecialAttackDescription();
         public void Reset();
         public string GetName();
+        public int GetSpeedModifier();
     }
 }

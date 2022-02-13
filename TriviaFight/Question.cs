@@ -22,7 +22,7 @@ namespace TriviaFight
             incorrectAnswers = q.Incorrect_Answers;
             possibleAnswers = new();
             guessesRemaining = 1;
-            
+
 
         }
         public void AskQuestion()
@@ -45,7 +45,7 @@ namespace TriviaFight
         }
         private bool CorrectAnswer(string answer)
         {
-            return answer==correctAnswer;
+            return answer == correctAnswer;
         }
         public bool CheckAnswer(List<string> answers, int answer)
         {
@@ -59,18 +59,18 @@ namespace TriviaFight
                 string? answer = Console.ReadLine();
                 int result = 0;
                 int.TryParse(answer, out result);
-                if (result>0 & result <= possibleAnswers.Count)
+                if (result > 0 & result <= possibleAnswers.Count)
                 {
                     return int.Parse(answer);
                 }
                 else if (result == possibleAnswers.Count + 1)
                 {
                     RemoveWrongAnswer rw = new();
-                    rw.Use(player,enemy, question);
+                    rw.Use(player, enemy, question);
                     AskQuestion();
                     return ProvideAnswer(player, enemy, question);
 
-                }
+                } else 
                 {
                     Console.WriteLine("Invalid Input, please try again");
                     return ProvideAnswer(player, enemy, question);
@@ -79,32 +79,34 @@ namespace TriviaFight
         }
         public bool AnswerQuestion(Player player, Enemy enemy, Question question)
         {
-            possibleAnswers= GeneratePossibleAnswers();
+            possibleAnswers = GeneratePossibleAnswers();
             AskQuestion();
-            while (guessesRemaining>0)
+            while (guessesRemaining > 0)
             {
-                int answer= ProvideAnswer(player, enemy, question);
+                int answer = ProvideAnswer(player, enemy, question);
                 if (CheckAnswer(possibleAnswers, answer))
                 {
                     guessesRemaining = 1;
                     Console.WriteLine($"You got it!");
                     return true;
-                } else
+                }
+                else
                 {
                     guessesRemaining--;
                     if (guessesRemaining == 0)
                     {
-                        Console.WriteLine($"Not Quite, correct answer was {correctAnswer}\n");       
-                    } else
+                        Console.WriteLine($"Not Quite, correct answer was {correctAnswer}\n");
+                    }
+                    else
                     {
                         Console.WriteLine($"Not Quite, try again");
                     }
-                    
+
                 }
 
             }
             guessesRemaining = 1;
-            return false;  
+            return false;
         }
         public override string ToString()
         {

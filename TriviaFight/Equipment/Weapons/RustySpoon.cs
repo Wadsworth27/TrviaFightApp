@@ -1,29 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaFight.Equipment
+﻿namespace TriviaFight.Equipment
 {
-    public class RustySpoon:Weapon,IWeapon
+    public class RustySpoon : Weapon, IWeapon
     {
-        public new string Name ="Rusty Spoon"; 
+        public new string Name = "Rusty Spoon";
         private new int DamagePotential
         {
-            get { return 5; }        
+            get { return 5; }
         }
-        private int specialMeter =0;
+        private int specialMeter = 0;
         private new int SpecialChargeRate = 50;
         public new int SpecialMeter
         {
             get { return specialMeter; }
-        } 
+        }
+        private int speedModifier = 10;
+
         public void SpecialAttack(Player player, Enemy enemy)
         {
-            player.Hitpoints = Math.Min(player.Hitpoints+5, player.MaxHitpoints);
+            player.Hitpoints = Math.Min(player.Hitpoints + 5, player.MaxHitpoints);
             Console.WriteLine($"{player} Healed to {player.Hitpoints}/{player.MaxHitpoints}");
-            enemy.HitPoints-= this.DamagePotential;
+            enemy.HitPoints -= this.DamagePotential;
             Console.WriteLine($"You did {this.DamagePotential} points of damage with {this.Name}!");
         }
         public void ChargeSpecial(int charge)
@@ -34,7 +30,7 @@ namespace TriviaFight.Equipment
         public void Attack(Enemy enemy)
         {
             Random random = new();
-            int damage = random.Next(1, this.DamagePotential+1);
+            int damage = random.Next(1, this.DamagePotential + 1);
             Console.WriteLine($"You did {damage} points of damage with {this.Name}!");
             enemy.HitPoints -= damage;
         }
@@ -49,7 +45,7 @@ namespace TriviaFight.Equipment
         }
         public int GetSpecialCharge()
         {
-            return Math.Min(this.SpecialMeter,100);
+            return Math.Min(this.SpecialMeter, 100);
         }
         public override string ToString()
         {
@@ -67,6 +63,10 @@ namespace TriviaFight.Equipment
         public string GetSpecialAttackDescription()
         {
             return "Heal player by up to 5 points while doing 5 points of damage to enemy";
+        }
+        public int GetSpeedModifier()
+        {
+            return speedModifier;
         }
     }
 }

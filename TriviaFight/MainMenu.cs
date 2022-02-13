@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaFight
+﻿namespace TriviaFight
 {
     public static class MainMenu
     {
@@ -31,13 +25,13 @@ namespace TriviaFight
                 Console.WriteLine("1. New Game\n\n");
                 Console.WriteLine("2. Load Game\n");
                 string newOrLoad = Console.ReadLine();
-                if (newOrLoad =="1")
+                if (newOrLoad == "1")
                 {
                     Console.Clear();
                     return "new";
-                } 
-                
-                if (newOrLoad =="2")
+                }
+
+                if (newOrLoad == "2")
                 {
                     Console.Clear();
                     return "load";
@@ -48,7 +42,7 @@ namespace TriviaFight
         {
             Console.WriteLine("Please enter your player name:");
             string name = string.Empty;
-            while (name.Length<1 | name.Length>15 | name==null)
+            while (name.Length < 1 | name.Length > 15 | name == null)
             {
                 name = Console.ReadLine();
             }
@@ -59,9 +53,9 @@ namespace TriviaFight
         }
         public static int Menu()
         {
-           
+
             Console.WriteLine("Choose your game mode:\n\n" +
-                "1. Challenge a category master. Defeat all masters to become the ultimate champion!\n"+
+                "1. Challenge a category master. Defeat all masters to become the ultimate champion!\n" +
                 "2. Trivia Challenge - 10 question general knowledge trivia. Earn weapons and items!\n" +
                 "3. Random Battle - Battle a random opponent from history to gain experience and gold!\n" +
                 "4. Shop - Find new items and power ups\n" +
@@ -71,18 +65,18 @@ namespace TriviaFight
                 string? choice = Console.ReadLine();
                 int result;
                 Int32.TryParse(choice, out result);
-                if (result > 0 & result <6)
+                if (result > 0 & result < 6)
                 {
                     return result;
                 }
 
             }
-            
+
         }
         public static void GameHandler(int choice, Player player)
         {
             Console.Clear();
-            switch(choice)
+            switch (choice)
             {
                 case 1:
                     //some code for masters
@@ -93,11 +87,11 @@ namespace TriviaFight
                     break;
                 case 3:
                     FightBrain fb = new();
-                    Enemy enemy = new Enemy(1,10);
-                    player.Heal();
+                    Enemy enemy = new Enemy(1, 10,50);
+                    player.Reset();
                     player.ChooseWeapon();
                     player.Weapon.Reset();
-                    fb.PlayGame(player,enemy);
+                    fb.PlayGame(player, enemy);
                     break;
                 case 4:
                     //Some Shop Code

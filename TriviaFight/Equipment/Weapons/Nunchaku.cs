@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaFight.Equipment.Weapons
+﻿namespace TriviaFight.Equipment.Weapons
 {
     public class Nunchaku : Weapon, IWeapon
     {
@@ -17,17 +11,18 @@ namespace TriviaFight.Equipment.Weapons
         }
         private int specialMeter = 0;
         private new int SpecialChargeRate = 100;
+        private int speedModifier = -10;
         public new int SpecialMeter
         {
             get { return specialMeter; }
         }
-        public void SpecialAttack(Player player,Enemy enemy)
+        public void SpecialAttack(Player player, Enemy enemy)
         {
             damagePotential += 1;
             Console.WriteLine("Your damage and healing potential has increased by 1 for the duration of this fight!");
             Attack(enemy);
             Attack(enemy);
-            
+
         }
         public void ChargeSpecial(int charge)
         {
@@ -46,9 +41,10 @@ namespace TriviaFight.Equipment.Weapons
                 {
                     damage = random.Next(1, this.DamagePotential + 1);
                     Console.WriteLine($"You did {damage} points of damage with hit {++hits}!");
-                    total+= damage;
+                    total += damage;
                     hitPercentage /= 2;
-                } else
+                }
+                else
                 {
                     break;
                 }
@@ -109,6 +105,11 @@ namespace TriviaFight.Equipment.Weapons
         public string GetName()
         {
             return Name;
+        }
+
+        public int GetSpeedModifier()
+        {
+            return speedModifier;
         }
     }
 }

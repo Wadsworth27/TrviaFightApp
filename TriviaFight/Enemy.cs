@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TriviaFight.Equipment;
+﻿using TriviaFight.Equipment;
 using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
@@ -14,17 +9,20 @@ namespace TriviaFight
         public string Name { get; set; } = "Enemy";
         public int HitPoints { get; set; }
         public int DamagePotential { get; set; }
-        public int HitPercentage { get; set; } = 0;
+        public int HitPercentage { get; set; } = 100;
+        public int Stamina { get; set; } = 0;
+        public int Speed { get; set; }
 
-        public Enemy(int hitpoints,int damage)
+        public Enemy(int hitpoints, int damage, int speed)
         {
             this.HitPoints = hitpoints;
             this.DamagePotential = damage;
+            Speed = speed;
         }
 
         public virtual int DoDamage()
         {
-            return random.Next(this.DamagePotential+1);
+            return random.Next(this.DamagePotential + 1);
         }
         public virtual void Attack(Player player)
         {
@@ -37,8 +35,8 @@ namespace TriviaFight
             {
                 if (random.Next(100) <= this.HitPercentage)
                 {
-                    int damage = random.Next(1,this.DamagePotential);
-                    player.Hitpoints-=damage;
+                    int damage = random.Next(1, this.DamagePotential);
+                    player.Hitpoints -= damage;
                     Console.WriteLine($"Enemy hit {player} for {damage} points of damage!");
                 }
                 else
@@ -54,7 +52,7 @@ namespace TriviaFight
             bool existing = false;
             foreach (IWeapon weapon in player.WeaponList)
             {
-                if (weapon.GetName()==nc.Name)
+                if (weapon.GetName() == nc.Name)
                 {
                     existing = true;
                 }
@@ -62,7 +60,8 @@ namespace TriviaFight
             if (existing)
             {
                 Console.WriteLine($"You already have {nc}");
-            } else
+            }
+            else
             {
                 player.AddWeapon(nc);
             }

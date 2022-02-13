@@ -1,5 +1,4 @@
 ﻿using TriviaFight.Equipment;
-using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
@@ -7,22 +6,24 @@ namespace TriviaFight
     {
 
         public string Name { get; set; } = "Steve";
-        public int MaxHitpoints { get; set; } = 25;
+        public int MaxHitpoints { get; set; } = 1;
         public int Hitpoints { get; set; } = 25;
         public int Level { get; set; } = 1;
-        public IWeapon Weapon { get; set; } = null;
+        public IWeapon Weapon { get; set; }
         public List<IWeapon> WeaponList = new List<IWeapon>();
-        public bool Blocking { get; set; } = false; 
-        
+        public bool Blocking { get; set; } = false;
+        public int Speed { get; set; } = 50;
+        public int Stamina { get; set; } = 0;
+
         public Player(string name)
         {
             Name = name;
             RustySpoon spoon = new();
             WeaponList.Add(spoon);
-            Weapon=spoon;
+            Weapon = spoon;
 
         }
-       
+
         public string SetMode()
         {
             while (true)
@@ -39,6 +40,7 @@ namespace TriviaFight
                 {
                     Console.WriteLine($"3. Special Attack - {Weapon.GetSpecialAttackDescription()}\n\n");
                 }
+                Console.WriteLine("9. Quit");
                 Console.Write("Please enter seletion: ");
                 string? response = Console.ReadLine();
 
@@ -57,6 +59,9 @@ namespace TriviaFight
                             return "Special";
                         }
                         break;
+                    case "9":
+                        Console.Clear();
+                        return "Quit";
                     default:
                         break;
                 }
@@ -64,12 +69,12 @@ namespace TriviaFight
                 Console.WriteLine("Invalid Input");
             }
 
-            }
-            public void EquipWeapon(IWeapon w)
-            {
-                
+        }
+        public void EquipWeapon(IWeapon w)
+        {
+
             this.Weapon = w;
-            }
+        }
         public void AddWeapon(IWeapon w)
         {
             WeaponList.Add(w);
@@ -86,13 +91,14 @@ namespace TriviaFight
             {
                 if (choice <= WeaponList.Count)
                 {
-                    this.EquipWeapon(WeaponList[choice-1]);
+                    this.EquipWeapon(WeaponList[choice - 1]);
                 }
                 else
                 {
                     ChooseWeapon();
                 }
-            } else
+            }
+            else
             {
                 ChooseWeapon();
             }
@@ -104,9 +110,16 @@ namespace TriviaFight
         {
             return this.Name;
         }
-        public void Heal()
+        public int GetSpeed()
+        {
+            return Speed + Weapon.GetSpeedModifier();
+        }
+
+        public void Reset()
         {
             Hitpoints = MaxHitpoints;
+            Stamina = 0;
+            Weapon.Reset();
         }
         public void DisplayInfo()
         {
@@ -114,4 +127,4 @@ namespace TriviaFight
         }
 
     }
-    }
+}

@@ -11,7 +11,7 @@ namespace TriviaFight
         public QuizBrain()
         {
         }
-        public virtual QuestionSet GetQuestions(string url="https://opentdb.com/api.php?amount=10&type=multiple")
+        public virtual QuestionSet GetQuestions(string url = "https://opentdb.com/api.php?amount=10&type=multiple")
         {
             APIClient.initializeClient();
             QuestionResultsModel QuestionModels = APIClient.GetQuestionsAsync(url).GetAwaiter().GetResult();
@@ -23,8 +23,8 @@ namespace TriviaFight
             QuestionSet questionSet = this.GetQuestions();
             foreach (Question question in questionSet.Questions)
             {
-
-                if (question.AnswerQuestion(player=new("Greg"),new Enemy(25,1) ,question))
+                
+                if (question.AnswerQuestion(player = new("Greg"), new Enemy(25, 1, 50), question))
                 {
 
                     this.QuestionsAsked += 1;
@@ -34,7 +34,8 @@ namespace TriviaFight
                     Console.Clear();
 
                 }
-                else {
+                else
+                {
                     this.QuestionsAsked += 1;
                     Console.WriteLine($"You are {QuestionsCorrect}/{QuestionsAsked}\n");
                     string? _ = Console.ReadLine();

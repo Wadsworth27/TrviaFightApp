@@ -1,8 +1,4 @@
-﻿using APiHandler;
-using TriviaFight.Equipment;
-using TriviaFight.Equipment.Weapons;
-
-namespace TriviaFight;
+﻿namespace TriviaFight;
 class Program
 {
     static void Main(string[] args)
@@ -27,8 +23,8 @@ class Program
             MainMenu.GameHandler(MainMenu.Menu(), player);
         }
     }
-    
-        }
+
+}
 
 
 
