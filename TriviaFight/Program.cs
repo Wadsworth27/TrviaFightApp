@@ -1,9 +1,13 @@
-﻿namespace TriviaFight;
+﻿using TriviaFight.Consumables;
+
+namespace TriviaFight;
 class Program
 {
     static void Main(string[] args)
     {
         Player player;
+
+
         MainMenu.DisplayHomesceen();
         string NeworLoad = MainMenu.NewOrLoadGame();
 

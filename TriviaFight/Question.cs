@@ -35,6 +35,7 @@ namespace TriviaFight
                 Console.WriteLine($"{answerLocation}: {answer}\n".Replace("&quot;", "\"").Replace("&#039;", "'").Replace("&amp;", "&"));
                 answerLocation += 1;
             }
+            Console.WriteLine($"{answerLocation}: Use Item");
         }
         public List<string> GeneratePossibleAnswers()
         {
@@ -65,8 +66,23 @@ namespace TriviaFight
                 }
                 else if (result == possibleAnswers.Count + 1)
                 {
-                    RemoveWrongAnswer rw = new();
-                    rw.Use(player, enemy, question);
+                    Console.WriteLine("Choose an item to use.\n\n");
+                    var validConsumables=player.GetListOfConsumablesByTargetType("Question");
+                    player.DisplayConsumables(validConsumables);
+                    if (validConsumables.Any())
+                    {
+                        Console.WriteLine($"{validConsumables.Count + 1}: Exit\n");
+                        int choice = 0;
+                        while (choice <= 0 | choice > validConsumables.Count + 1)
+                        {
+                            int.TryParse(Console.ReadLine(), out choice);
+                        }
+                        if (choice <= validConsumables.Count)
+                        {
+                            validConsumables[choice - 1].Use(player, enemy, question);
+                        }
+                    }
+                    Console.Clear();
                     AskQuestion();
                     return ProvideAnswer(player, enemy, question);
 
