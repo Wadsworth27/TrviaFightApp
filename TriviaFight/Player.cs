@@ -67,7 +67,8 @@ namespace TriviaFight
             }
             public void EquipWeapon(IWeapon w)
             {
-                this.Weapon = w;
+                
+            this.Weapon = w;
             }
         public void AddWeapon(IWeapon w)
         {

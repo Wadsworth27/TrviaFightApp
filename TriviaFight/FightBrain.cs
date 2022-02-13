@@ -23,7 +23,7 @@ namespace TriviaFight
                     }
                     Console.WriteLine($"Mode: {mode}\n\n");
 
-                    if (question.AnswerQuestion())
+                    if (question.AnswerQuestion(player, enemy,question))
                     {
                         AnswerSuccess(mode, player, enemy);
                         if (enemy.HitPoints <= 0)

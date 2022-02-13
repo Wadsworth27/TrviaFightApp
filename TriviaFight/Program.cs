@@ -10,10 +10,10 @@ class Program
         Player player;
         MainMenu.DisplayHomesceen();
         string NeworLoad = MainMenu.NewOrLoadGame();
-        
-        if (NeworLoad =="new")
+
+        if (NeworLoad == "new")
         {
-           player = MainMenu.StartNewGame();
+            player = MainMenu.StartNewGame();
         }
         else
         {
@@ -21,28 +21,15 @@ class Program
             //some load code here
         }
         bool gameon = true;
-        while(gameon)
+        while (gameon)
         {
             player.DisplayInfo();
-            MainMenu.GameHandler(MainMenu.Menu(),player);
+            MainMenu.GameHandler(MainMenu.Menu(), player);
         }
-        
-        
+    }
+    
+        }
 
-        /*Player steve = new();
-        Nunchaku nun = new();
-        RustySpoon rusty = new();
-        steve.AddWeapon(nun);
-        steve.AddWeapon(rusty);
-        steve.ChooseWeapon();
-        Enemy enemy = new(25,5);
-        FightBrain fightBrain = new();
-        fightBrain.PlayGame(steve, enemy);
-        */
-     }
-
-
-}
 
 
 

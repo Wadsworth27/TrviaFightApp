@@ -1,4 +1,5 @@
 ﻿using APiHandler;
+using TriviaFight.Consumables;
 
 namespace TriviaFight
 {
@@ -51,7 +52,7 @@ namespace TriviaFight
             int v = answers.FindIndex(CorrectAnswer);
             return v == answer - 1;
         }
-        public int ProvideAnswer()
+        public int ProvideAnswer(Player player, Enemy enemy, Question question)
         {
             {
                 Console.WriteLine("What is you answer?: ");
@@ -62,20 +63,28 @@ namespace TriviaFight
                 {
                     return int.Parse(answer);
                 }
-                else
+                else if (result == possibleAnswers.Count + 1)
+                {
+                    RemoveWrongAnswer rw = new();
+                    rw.Use(player,enemy, question);
+                    AskQuestion();
+                    return ProvideAnswer(player, enemy, question);
+
+                }
                 {
                     Console.WriteLine("Invalid Input, please try again");
-                    return ProvideAnswer();
+                    return ProvideAnswer(player, enemy, question);
                 }
             }
         }
-        public bool AnswerQuestion()
+        public bool AnswerQuestion(Player player, Enemy enemy, Question question)
         {
             possibleAnswers= GeneratePossibleAnswers();
             AskQuestion();
             while (guessesRemaining>0)
             {
-                if (CheckAnswer(possibleAnswers, ProvideAnswer()))
+                int answer= ProvideAnswer(player, enemy, question);
+                if (CheckAnswer(possibleAnswers, answer))
                 {
                     guessesRemaining = 1;
                     Console.WriteLine($"You got it!");
