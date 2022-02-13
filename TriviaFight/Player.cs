@@ -22,21 +22,7 @@ namespace TriviaFight
             Weapon=spoon;
 
         }
-        
-        public int AnswerQuestion()
-        {
-            Console.WriteLine("What is you answer?: ");
-            string? answer = Console.ReadLine();
-            if (answer == "1" | answer == "2" | answer == "3" | answer == "4")
-            {
-                return int.Parse(answer);
-            }
-            else
-            {
-                Console.WriteLine("Invalid Input, please try again");
-                return AnswerQuestion();
-            }
-        }
+       
         public string SetMode()
         {
             while (true)

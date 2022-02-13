@@ -23,27 +23,22 @@ namespace TriviaFight
             QuestionSet questionSet = this.GetQuestions();
             foreach (Question question in questionSet.Questions)
             {
-                Console.WriteLine(question + "\n");
-                List<string> possibleAnswers = question.GeneratePossibleAnswers();
-                int answerLocation = 1;
-                foreach (string answer in possibleAnswers)
-                {
-                    Console.WriteLine($"{answerLocation}: {answer}\n".Replace("&quot;", "\"").Replace("&#039;", "'").Replace("&amp;", "&"));
-                    answerLocation += 1;
-                }
 
-                if (question.CheckAnswer(possibleAnswers, player.AnswerQuestion()))
+                if (question.AnswerQuestion())
                 {
 
                     this.QuestionsAsked += 1;
                     this.QuestionsCorrect += 1;
-                    Console.WriteLine($"You got it!\nYou are {this.QuestionsCorrect}/{this.QuestionsAsked}\n");
-
+                    Console.WriteLine($"You are {this.QuestionsCorrect}/{this.QuestionsAsked}\n");
+                    string? _ = Console.ReadLine();
+                    Console.Clear();
 
                 }
                 else {
                     this.QuestionsAsked += 1;
-                    Console.WriteLine($"Not Quite, correct answer was {question.correctAnswer}\nYou are {QuestionsCorrect}/{QuestionsAsked}\n"); 
+                    Console.WriteLine($"You are {QuestionsCorrect}/{QuestionsAsked}\n");
+                    string? _ = Console.ReadLine();
+                    Console.Clear();
                 }
 
             }

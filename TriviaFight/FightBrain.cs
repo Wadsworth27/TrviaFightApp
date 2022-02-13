@@ -22,10 +22,8 @@ namespace TriviaFight
                         player.Weapon.UseSpecial();
                     }
                     Console.WriteLine($"Mode: {mode}\n\n");
-                    List<string> possibleAnswers = new List<string>();
-                    AskQuestion(question, out possibleAnswers);
-                    
-                    if (question.CheckAnswer(possibleAnswers, player.AnswerQuestion()))
+
+                    if (question.AnswerQuestion())
                     {
                         AnswerSuccess(mode, player, enemy);
                         if (enemy.HitPoints <= 0)
@@ -35,10 +33,6 @@ namespace TriviaFight
                             enemy.DropLoot(player);
                             break;
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Not Quite, correct answer was {question.correctAnswer}\n");
                     }
                     enemy.Attack(player);
 
@@ -56,17 +50,6 @@ namespace TriviaFight
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
             Console.Clear();
-        }
-        public static void AskQuestion(Question question, out List<string> possibleAnswers)
-        {
-            Console.WriteLine(question + "\n");
-            possibleAnswers = question.GeneratePossibleAnswers();
-            int answerLocation = 1;
-            foreach (string answer in possibleAnswers)
-            {
-                Console.WriteLine($"{answerLocation}: {answer}\n".Replace("&quot;", "\"").Replace("&#039;", "'").Replace("&amp;", "&"));
-                answerLocation += 1;
-            }
         }
         public static void AnswerSuccess(string mode,Player player,Enemy enemy)
         {
