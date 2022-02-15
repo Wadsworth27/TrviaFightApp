@@ -57,7 +57,7 @@ namespace TriviaFight
         {
             {
                 Console.WriteLine("What is you answer?: ");
-                string? answer = Console.ReadLine();
+                string answer = Console.ReadLine();
                 int result = 0;
                 int.TryParse(answer, out result);
                 if (result > 0 & result <= possibleAnswers.Count)

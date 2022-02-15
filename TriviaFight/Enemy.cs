@@ -50,9 +50,9 @@ namespace TriviaFight
             Nunchaku nc = new();
             Console.WriteLine("Weapon found!");
             bool existing = false;
-            foreach (IWeapon weapon in player.WeaponList)
+            foreach (Weapon weapon in player.WeaponList)
             {
-                if (weapon.GetName() == nc.Name)
+                if (weapon.Name == nc.Name)
                 {
                     existing = true;
                 }

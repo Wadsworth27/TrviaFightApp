@@ -3,33 +3,31 @@
     public class Nunchaku : Weapon, IWeapon
     {
         Random random = new();
-        public new string Name = "Nunchakus";
-        private int damagePotential = 1;
-        public new int DamagePotential
-        {
-            get { return damagePotential; }
-        }
+        public override string Name { get; set; } = "Nunchakus";
+        public override int DamagePotential { get; set; } = 1;
+        public override int SpecialChargeRate { get; set; } = 100;
+        public override int SpeedModifier { get; set; } = -10;
         private int specialMeter = 0;
-        private new int SpecialChargeRate = 100;
-        private int speedModifier = -10;
-        public new int SpecialMeter
+        public override int SpecialMeter
         {
-            get { return specialMeter; }
+            get { return Math.Min(specialMeter,100); }
         }
-        public void SpecialAttack(Player player, Enemy enemy)
+        public override string SpecialAttackDescription { get; set; } =
+            "Heal player by up to 5 points while doing 5 points of damage to enemy";
+        public override void SpecialAttack(Player player, Enemy enemy)
         {
-            damagePotential += 1;
+            DamagePotential += 1;
             Console.WriteLine("Your damage and healing potential has increased by 1 for the duration of this fight!");
             Attack(enemy);
             Attack(enemy);
 
         }
-        public void ChargeSpecial(int charge)
+        public override void ChargeSpecial(int charge)
         {
 
             this.specialMeter += charge;
         }
-        public void Attack(Enemy enemy)
+        public override void Attack(Enemy enemy)
         {
             int total = 0;
             int hitPercentage = 190;
@@ -52,9 +50,9 @@
             Console.WriteLine($"\nYou did {total} points of damage over {hits} hits with {this.Name}!");
             enemy.HitPoints -= total;
         }
-        public void Defend(Player player)
+        public override void Defend(Player player)
         {
-            player.Weapon.ChargeSpecial(player.Weapon.GetSpecialChargeRate());
+            player.Weapon.ChargeSpecial(player.Weapon.SpecialChargeRate);
             int total = 0;
             int hitPercentage = 190;
             int heal;
@@ -76,41 +74,22 @@
             Console.WriteLine($"\nYou healed for {total} points of damage over {hits} forms!");
             player.Hitpoints = Math.Min(player.MaxHitpoints, player.Hitpoints + total);
         }
-        public int GetSpecialChargeRate()
-        {
-            return this.SpecialChargeRate;
-        }
-        public int GetSpecialCharge()
-        {
-            return Math.Min(this.SpecialMeter, 100);
-        }
         public override string ToString()
         {
             return this.Name;
         }
 
-        public void UseSpecial()
+        public override void UseSpecial()
         {
             this.specialMeter = 0;
         }
 
-        public string GetSpecialAttackDescription()
-        {
-            return "Power up your nunchucks while delivering a devistating double attack!";
-        }
         public override void Reset()
         {
-            damagePotential = 1;
-        }
-        public string GetName()
-        {
-            return Name;
+            DamagePotential = 1;
         }
 
-        public int GetSpeedModifier()
-        {
-            return speedModifier;
-        }
+
     }
 }
 

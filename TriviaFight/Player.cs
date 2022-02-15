@@ -10,8 +10,8 @@ namespace TriviaFight
         public int MaxHitpoints { get; set; } = 1;
         public int Hitpoints { get; set; } = 25;
         public int Level { get; set; } = 1;
-        public IWeapon Weapon { get; set; }
-        public List<IWeapon> WeaponList = new List<IWeapon>();
+        public Weapon Weapon { get; set; }
+        public List<Weapon> WeaponList = new List<Weapon>();
         public bool Blocking { get; set; } = false;
         public List<IConsumable> Consumables= new List<IConsumable>();
         public int Speed { get; set; } = 50;
@@ -34,16 +34,16 @@ namespace TriviaFight
             while (true)
             {
                 bool specialAvalible = false;
-                if (this.Weapon.GetSpecialCharge() == 100)
+                if (this.Weapon.SpecialMeter == 100)
                 {
                     specialAvalible = true;
 
                 }
                 Console.WriteLine($"Please set strategy for this round:\n1. Attack - Attempt to damage enemy.\n2. Defense - Block Enemy atatck and charge special meter. " +
-                    $"Currently {this.Weapon.GetSpecialCharge()}/100");
+                    $"Currently {this.Weapon.SpecialMeter}/100");
                 if (specialAvalible)
                 {
-                    Console.WriteLine($"3. Special Attack - {Weapon.GetSpecialAttackDescription()}\n\n");
+                    Console.WriteLine($"3. Special Attack - {Weapon.SpecialAttackDescription}\n\n");
                 }
                 Console.WriteLine("9. Quit");
                 Console.Write("Please enter seletion: ");
@@ -75,12 +75,12 @@ namespace TriviaFight
             }
 
         }
-        public void EquipWeapon(IWeapon w)
+        public void EquipWeapon(Weapon w)
         {
 
             this.Weapon = w;
         }
-        public void AddWeapon(IWeapon w)
+        public void AddWeapon(Weapon w)
         {
             WeaponList.Add(w);
         }
@@ -172,7 +172,7 @@ namespace TriviaFight
         }
         public int GetSpeed()
         {
-            return Speed + Weapon.GetSpeedModifier();
+            return Speed + Weapon.SpeedModifier;
         }
 
         public void Reset()

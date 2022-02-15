@@ -24,7 +24,7 @@
             {
                 Console.WriteLine("1. New Game\n\n");
                 Console.WriteLine("2. Load Game\n");
-                string newOrLoad = Console.ReadLine();
+                string? newOrLoad = Console.ReadLine();
                 if (newOrLoad == "1")
                 {
                     Console.Clear();
