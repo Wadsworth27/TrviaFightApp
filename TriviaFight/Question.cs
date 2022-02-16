@@ -67,8 +67,8 @@ namespace TriviaFight
                 else if (result == possibleAnswers.Count + 1)
                 {
                     Console.WriteLine("Choose an item to use.\n\n");
-                    var validConsumables=player.GetListOfConsumablesByTargetType("Question");
-                    player.DisplayConsumables(validConsumables);
+                    var validConsumables=player.ConsumableInventory.GetListOfConsumablesByTargetType("Question");
+                    player.ConsumableInventory.DisplayConsumables(validConsumables);
                     if (validConsumables.Any())
                     {
                         Console.WriteLine($"{validConsumables.Count + 1}: Exit\n");
@@ -79,7 +79,7 @@ namespace TriviaFight
                         }
                         if (choice <= validConsumables.Count)
                         {
-                            validConsumables[choice - 1].Use(player, enemy, question);
+                            validConsumables[choice - 1].Use(question);
                         }
                     }
                     Console.Clear();
@@ -126,7 +126,7 @@ namespace TriviaFight
         }
         public override string ToString()
         {
-            return this.questionText.ToString();
+            return questionText;
         }
     }
 }

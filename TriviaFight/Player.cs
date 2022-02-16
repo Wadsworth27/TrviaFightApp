@@ -13,7 +13,8 @@ namespace TriviaFight
         public Weapon Weapon { get; set; }
         public List<Weapon> WeaponList = new List<Weapon>();
         public bool Blocking { get; set; } = false;
-        public List<IConsumable> Consumables= new List<IConsumable>();
+        public List<Consumable> Consumables= new List<Consumable>();
+        public ConsumableInventory ConsumableInventory = new ConsumableInventory();
         public int Speed { get; set; } = 50;
         public int Stamina { get; set; } = 0;
 
@@ -23,9 +24,9 @@ namespace TriviaFight
             RustySpoon spoon = new();
             WeaponList.Add(spoon);
             Weapon = spoon;
-            RemoveWrongAnswer rw = new();
-            AddConsumable(rw);
-            AddConsumable(rw);
+            ClarityPotion rw = new();
+            ConsumableInventory.AddConsumable(rw);
+            ConsumableInventory.AddConsumable(rw);
 
         }
 
@@ -111,61 +112,9 @@ namespace TriviaFight
             string? _ = Console.ReadLine();
             Console.Clear();
         }
-        public void AddConsumable(IConsumable consumable)
-        {
-            bool existing = false;
-            foreach (IConsumable c in Consumables)
-            {
-                if (c.ToString() == consumable.ToString())
-                {
-                    c.SetQuanity(consumable.GetQuanity() + c.GetQuanity());
-                    existing = true;
-                }
-            }
-            if (!existing)
-            {
-                Consumables.Add(consumable);
 
-            }
-        }
-        public void DisplayConsumables()
-        {
-            if (Consumables.Count == 0)
-            {
-                Console.WriteLine("No items to display. Press any key to continue");
-                Console.ReadKey();
-                Console.Clear();
-            }
-            else
-            {
-                int counter = 1;
-                foreach (IConsumable c in Consumables)
-                {
-                    Console.WriteLine($"{counter}: {c} Quantity {c.GetQuanity()}\n");
-                    counter++;
-                }
-            }
-            
-        }
-        public void DisplayConsumables(List<IConsumable> consumables)
-        {
-            if (consumables.Count == 0)
-            {
-                Console.WriteLine("No items to display. Press any key to continue");
-                Console.ReadKey();
-                Console.Clear();
-            }
-            else
-            {
-                int counter = 1;
-                foreach (IConsumable c in consumables)
-                {
-                    Console.WriteLine($"{counter}: {c} Quantity {c.GetQuanity()}\n");
-                    counter++;
-                }
-            }
 
-        }
+
         public override string ToString()
         {
             return this.Name;
@@ -185,18 +134,7 @@ namespace TriviaFight
         {
             Console.WriteLine($"Player Name : {Name}\n\nLevel : {Level}\nHitpoints : {MaxHitpoints}\nWeapon : {Weapon}\n\n\n");
         }
-        public List<IConsumable> GetListOfConsumablesByTargetType(string target)
-        {
-            List<IConsumable> targetList = new();
-            foreach (var consumable in Consumables)
-            {
-                if (consumable.GetTarget() == target)
-                {
-                    targetList.Add(consumable);
-                }
-            }
-            return targetList;
-        }
+
 
     }
 }
