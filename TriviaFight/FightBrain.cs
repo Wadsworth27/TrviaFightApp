@@ -24,7 +24,7 @@
                             gameon = false;
                             break;
                         }
-                        player.Stamina += player.GetSpeed();
+                        player.Stamina += player.Speed;
                         enemy.Stamina += enemy.Speed;
                         Console.WriteLine($"Charging stamina based on speed:\n\nPlayer Stamina: {player.Stamina}\nEnemy Stamina: {enemy.Stamina}");
                         Thread.Sleep(1500);
@@ -62,7 +62,7 @@
                             break;
                         }
                     }
-
+                    player.TemporaryStatModifiers.DecrementTurnsRemaining();
                     
                     Console.WriteLine($"Player Hitpoints : {player.Hitpoints}\nEnemy Hitpoints: {enemy.HitPoints}\n\nHit any key to continue");
                     string? _ = Console.ReadLine();

@@ -15,4 +15,8 @@
     <ProjectReference Include="..\APiHandler\APiHandler.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Equipment\Armor\" />
+  </ItemGroup>
+
 </Project>

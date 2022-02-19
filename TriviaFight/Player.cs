@@ -7,7 +7,7 @@ namespace TriviaFight
     {
 
         public string Name { get; set; } = "Steve";
-        public int MaxHitpoints { get; set; } = 1;
+        public int MaxHitpoints { get; set; } = 50;
         public int Hitpoints { get; set; } = 25;
         public int Level { get; set; } = 1;
         public Weapon Weapon { get; set; }
@@ -15,8 +15,20 @@ namespace TriviaFight
         public bool Blocking { get; set; } = false;
         public List<Consumable> Consumables= new List<Consumable>();
         public ConsumableInventory ConsumableInventory = new ConsumableInventory();
-        public int Speed { get; set; } = 50;
+        private int speed = 50;
+        public int Speed
+        {
+            get
+            {
+                return speed + TemporaryStatModifiers.TemporarySpeed;
+            }
+            set
+            {
+                speed = value;
+            }
+        }
         public int Stamina { get; set; } = 0;
+        public TemporaryStatModifiers TemporaryStatModifiers { get; set; } = new();
 
         public Player(string name)
         {
@@ -25,8 +37,9 @@ namespace TriviaFight
             WeaponList.Add(spoon);
             Weapon = spoon;
             ClarityPotion rw = new();
+            CupOfCoffee coffee = new();
             ConsumableInventory.AddConsumable(rw);
-            ConsumableInventory.AddConsumable(rw);
+            ConsumableInventory.AddConsumable(coffee);
 
         }
 
@@ -46,6 +59,7 @@ namespace TriviaFight
                 {
                     Console.WriteLine($"3. Special Attack - {Weapon.SpecialAttackDescription}\n\n");
                 }
+                Console.WriteLine("5. Use Item");
                 Console.WriteLine("9. Quit");
                 Console.Write("Please enter seletion: ");
                 string? response = Console.ReadLine();
@@ -65,6 +79,26 @@ namespace TriviaFight
                             return "Special";
                         }
                         break;
+                    case "5":
+                        var playerConsumables =ConsumableInventory.GetListOfConsumablesByTargetType("Player");
+                        ConsumableInventory.DisplayConsumables(playerConsumables);
+                        if (playerConsumables.Any())
+                        {
+                            Console.WriteLine($"{playerConsumables.Count + 1}: Exit\n");
+                            int choice = 0;
+                            while (choice <= 0 | choice > playerConsumables.Count + 1)
+                            {
+                                int.TryParse(Console.ReadLine(), out choice);
+                            }
+                            if (choice <= playerConsumables.Count)
+                            {
+                                playerConsumables[choice - 1].Use(this);
+                                Console.WriteLine(this);
+                            }
+                        }
+                        return SetMode();
+                        
+
                     case "9":
                         Console.Clear();
                         return "Quit";
