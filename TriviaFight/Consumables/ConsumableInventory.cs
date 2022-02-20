@@ -95,5 +95,41 @@ namespace TriviaFight.Consumables
             }
             
         }
+        public void UseConsumable(Player player)
+        {
+            var playerConsumables = GetListOfConsumablesByTargetType("Player");
+            DisplayConsumables(playerConsumables);
+            if (playerConsumables.Any())
+            {
+                Console.WriteLine($"{playerConsumables.Count + 1}: Exit\n");
+                int choice = 0;
+                while (choice <= 0 | choice > playerConsumables.Count + 1)
+                {
+                    int.TryParse(Console.ReadLine(), out choice);
+                }
+                if (choice <= playerConsumables.Count)
+                {
+                    playerConsumables[choice - 1].Use(player);
+                }
+            }
+        }
+        public void UseConsumable(Enemy enemy)
+        {
+            var playerConsumables = GetListOfConsumablesByTargetType("Enemy");
+            DisplayConsumables(playerConsumables);
+            if (playerConsumables.Any())
+            {
+                Console.WriteLine($"{playerConsumables.Count + 1}: Exit\n");
+                int choice = 0;
+                while (choice <= 0 | choice > playerConsumables.Count + 1)
+                {
+                    int.TryParse(Console.ReadLine(), out choice);
+                }
+                if (choice <= playerConsumables.Count)
+                {
+                    playerConsumables[choice - 1].Use(enemy);
+                }
+            }
+        }
     }
 }

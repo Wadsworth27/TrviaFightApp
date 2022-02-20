@@ -18,7 +18,7 @@ class Program
         else
         {
             player = MainMenu.StartNewGame();
-            //some load code here
+            //some load code here Eventually
         }
         bool gameon = true;
         while (gameon)

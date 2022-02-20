@@ -3,7 +3,7 @@ using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
-    public class Enemy
+    public class Enemy : ITargetable
     {
         Random random = new();
         public string Name { get; set; } = "Enemy";
@@ -11,13 +11,27 @@ namespace TriviaFight
         public int DamagePotential { get; set; }
         public int HitPercentage { get; set; } = 100;
         public int Stamina { get; set; } = 0;
-        public int Speed { get; set; }
+        private int _speed;
+        public int Speed
+        {
+            get
+            {
+                Console.WriteLine($"Temp Speed: {TemporaryStatModifiers.TemporarySpeed}, Speed:{_speed }");
+                return _speed + TemporaryStatModifiers.TemporarySpeed;
+            }
+            set
+            {
+                _speed = value;
+            }
+        }
+
+        public TemporaryStatModifiers TemporaryStatModifiers{ get; set; } = new();
 
         public Enemy(int hitpoints, int damage, int speed)
         {
             this.HitPoints = hitpoints;
             this.DamagePotential = damage;
-            Speed = speed;
+            _speed = speed;
         }
 
         public virtual int DoDamage()

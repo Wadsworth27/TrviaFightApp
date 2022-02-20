@@ -3,7 +3,7 @@ using TriviaFight.Equipment;
 
 namespace TriviaFight
 {
-    public class Player
+    public class Player:ITargetable
     {
 
         public string Name { get; set; } = "Steve";
@@ -20,7 +20,7 @@ namespace TriviaFight
         {
             get
             {
-                return speed + TemporaryStatModifiers.TemporarySpeed;
+                return speed + TemporaryStatModifiers.TemporarySpeed + Weapon.SpeedModifier;
             }
             set
             {
@@ -38,12 +38,14 @@ namespace TriviaFight
             Weapon = spoon;
             ClarityPotion rw = new();
             CupOfCoffee coffee = new();
+            BananaPeel bp = new();
             ConsumableInventory.AddConsumable(rw);
             ConsumableInventory.AddConsumable(coffee);
+            ConsumableInventory.AddConsumable(bp);
 
         }
 
-        public string SetMode()
+ /*       public string SetMode()
         {
             while (true)
             {
@@ -93,7 +95,6 @@ namespace TriviaFight
                             if (choice <= playerConsumables.Count)
                             {
                                 playerConsumables[choice - 1].Use(this);
-                                Console.WriteLine(this);
                             }
                         }
                         return SetMode();
@@ -109,7 +110,7 @@ namespace TriviaFight
                 Console.WriteLine("Invalid Input");
             }
 
-        }
+        }*/
         public void EquipWeapon(Weapon w)
         {
 

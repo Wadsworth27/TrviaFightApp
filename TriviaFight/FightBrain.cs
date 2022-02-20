@@ -37,7 +37,7 @@
                     
                     
                     player.Stamina -= 100;
-                    string mode = player.SetMode();
+                    string mode = SetMode(player,enemy);
                     //Check if player chose to exit in mode selection
                     if (mode == "Quit")
                     {
@@ -63,7 +63,7 @@
                         }
                     }
                     player.TemporaryStatModifiers.DecrementTurnsRemaining();
-                    
+                    enemy.TemporaryStatModifiers.DecrementTurnsRemaining();
                     Console.WriteLine($"Player Hitpoints : {player.Hitpoints}\nEnemy Hitpoints: {enemy.HitPoints}\n\nHit any key to continue");
                     string? _ = Console.ReadLine();
                     Console.Clear();
@@ -89,6 +89,58 @@
                 default:
                     break;
             }
+        }
+        public string SetMode(Player player, Enemy enemy)
+        {
+            while (true)
+            {
+                bool specialAvalible = false;
+                if (player.Weapon.SpecialMeter == 100)
+                {
+                    specialAvalible = true;
+
+                }
+                Console.WriteLine($"Please set strategy for this round:\n1. Attack - Attempt to damage enemy.\n2. Defense - Block Enemy atatck and charge special meter. " +
+                    $"Currently {player.Weapon.SpecialMeter}/100");
+                if (specialAvalible)
+                {
+                    Console.WriteLine($"3. Special Attack - {player.Weapon.SpecialAttackDescription}\n\n");
+                }
+                Console.WriteLine("5. Use Item");
+                Console.WriteLine("9. Quit");
+                Console.Write("Please enter seletion: ");
+                string? response = Console.ReadLine();
+
+                switch (response)
+                {
+                    case "1":
+                        Console.Clear();
+                        return "Attack";
+                    case "2":
+                        Console.Clear();
+                        return "Defense";
+                    case "3":
+                        if (specialAvalible)
+                        {
+                            Console.Clear();
+                            return "Special";
+                        }
+                        break;
+                    case "5":
+                        player.ConsumableInventory.UseConsumable(enemy);
+                        return SetMode(player,enemy);
+
+
+                    case "9":
+                        Console.Clear();
+                        return "Quit";
+                    default:
+                        break;
+                }
+                Console.Clear();
+                Console.WriteLine("Invalid Input");
+            }
+
         }
     }
 }

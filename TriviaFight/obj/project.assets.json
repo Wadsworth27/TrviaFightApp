@@ -5299,23 +5299,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\stwad\\.nuget\\packages\\": {},
+    "C:\\Users\\Steve\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\TriviaFight\\TriviaFight.csproj",
+      "projectUniqueName": "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\TriviaFight\\TriviaFight.csproj",
       "projectName": "TriviaFight",
-      "projectPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\TriviaFight\\TriviaFight.csproj",
-      "packagesPath": "C:\\Users\\stwad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\TriviaFight\\obj\\",
+      "projectPath": "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\TriviaFight\\TriviaFight.csproj",
+      "packagesPath": "C:\\Users\\Steve\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\TriviaFight\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\stwad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5330,8 +5330,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj": {
-              "projectPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj"
+            "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\APiHandler\\APiHandler.csproj": {
+              "projectPath": "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\APiHandler\\APiHandler.csproj"
             }
           }
         }

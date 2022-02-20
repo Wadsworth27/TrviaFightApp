@@ -20,7 +20,7 @@ namespace TriviaFight.Consumables
         }
         public override void Use(Player player)
         {
-            StatModifier speedBoost = new StatModifier("Speed", 10, 3);
+            StatModifier speedBoost = new StatModifier("Speed", 2, 1);
             player.TemporaryStatModifiers.AddModifier(speedBoost);
             player.TemporaryStatModifiers.CalculateStats();
         }

@@ -13,6 +13,7 @@ namespace TriviaFight
         public void AddModifier(StatModifier statmod)
         {
             statModifiers.Add(statmod);
+            Console.WriteLine(statModifiers.Count);
         }
         public void RemoveInactiveModifiers()
         {
@@ -28,24 +29,28 @@ namespace TriviaFight
         }
         public void CalculateStats()
         {
+            RemoveInactiveModifiers();
             TemporarySpeed = 0;
+            int _tempSpeed = 0;
             foreach (StatModifier modifier in statModifiers)
             {
                 switch (modifier.Stat)
                 {
                     case "Speed":
-                        TemporarySpeed += modifier.Modifier;
+                        _tempSpeed += modifier.Modifier;
                         break;
                     default:
                         break;
                 }
             }
+            TemporarySpeed += _tempSpeed;
         }
         public void DecrementTurnsRemaining()
         {
             foreach (StatModifier modifier in statModifiers)
             {
                 modifier.TurnsRemaining--;
+                CalculateStats();
 
             }
         }
