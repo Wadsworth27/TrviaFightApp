@@ -20,9 +20,11 @@ namespace TriviaFight.Consumables
         }
         public override void Use(Player player)
         {
-            StatModifier speedBoost = new StatModifier("Speed", 2, 1);
-            player.TemporaryStatModifiers.AddModifier(speedBoost);
-            player.TemporaryStatModifiers.CalculateStats();
+            player.TemporaryStatModifiers.AddModifier(new StatModifier("Speed", 1, 1));
+            Quantity--;
+            Console.WriteLine("You chug a big cup of coffee and feel very alert!\nPress any key to continue.");
+            Console.ReadKey();
+            Console.Clear();
         }
 
     }

@@ -60,6 +60,19 @@ namespace TriviaFight.Consumables
             }
             return targetList;
         }
+        public List<Consumable> GetListOfConsumablesByTargetType(string target1,string target2)
+        {
+            RemoveEmptyConsumables();
+            List<Consumable> targetList = new();
+            foreach (var consumable in AllConsumables)
+            {
+                if (consumable.Target == target1 | consumable.Target == target2)
+                {
+                    targetList.Add(consumable);
+                }
+            }
+            return targetList;
+        }
         public void DisplayConsumables(List<Consumable> consumables)
         {
             RemoveEmptyConsumables();
@@ -95,9 +108,9 @@ namespace TriviaFight.Consumables
             }
             
         }
-        public void UseConsumable(Player player)
+        public void UseConsumable(Player player, Enemy enemy)
         {
-            var playerConsumables = GetListOfConsumablesByTargetType("Player");
+            var playerConsumables = GetListOfConsumablesByTargetType("Player","Enemy");
             DisplayConsumables(playerConsumables);
             if (playerConsumables.Any())
             {
@@ -109,7 +122,14 @@ namespace TriviaFight.Consumables
                 }
                 if (choice <= playerConsumables.Count)
                 {
-                    playerConsumables[choice - 1].Use(player);
+                    if (playerConsumables[choice - 1].Target == "Player")
+                    {
+                        playerConsumables[choice - 1].Use(player);
+                    }else
+                    {
+                        playerConsumables[choice - 1].Use(enemy);
+                    }
+                    
                 }
             }
         }
@@ -128,6 +148,27 @@ namespace TriviaFight.Consumables
                 if (choice <= playerConsumables.Count)
                 {
                     playerConsumables[choice - 1].Use(enemy);
+                } else
+                {
+                    Console.Clear();
+                }
+            }
+        }
+        public void UseConsumable(Question question)
+        {
+            var playerConsumables = GetListOfConsumablesByTargetType("Question");
+            DisplayConsumables(playerConsumables);
+            if (playerConsumables.Any())
+            {
+                Console.WriteLine($"{playerConsumables.Count + 1}: Exit\n");
+                int choice = 0;
+                while (choice <= 0 | choice > playerConsumables.Count + 1)
+                {
+                    int.TryParse(Console.ReadLine(), out choice);
+                }
+                if (choice <= playerConsumables.Count)
+                {
+                    playerConsumables[choice - 1].Use(question);
                 }
             }
         }

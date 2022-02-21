@@ -89,7 +89,6 @@
                     FightBrain fb = new();
                     Enemy enemy = new Enemy(100, 10,50);
                     player.Reset();
-                    player.ChooseWeapon();
                     player.Weapon.Reset();
                     fb.PlayGame(player, enemy);
                     break;

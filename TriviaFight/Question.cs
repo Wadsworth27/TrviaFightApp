@@ -66,22 +66,7 @@ namespace TriviaFight
                 }
                 else if (result == possibleAnswers.Count + 1)
                 {
-                    Console.WriteLine("Choose an item to use.\n\n");
-                    var validConsumables=player.ConsumableInventory.GetListOfConsumablesByTargetType("Question");
-                    player.ConsumableInventory.DisplayConsumables(validConsumables);
-                    if (validConsumables.Any())
-                    {
-                        Console.WriteLine($"{validConsumables.Count + 1}: Exit\n");
-                        int choice = 0;
-                        while (choice <= 0 | choice > validConsumables.Count + 1)
-                        {
-                            int.TryParse(Console.ReadLine(), out choice);
-                        }
-                        if (choice <= validConsumables.Count)
-                        {
-                            validConsumables[choice - 1].Use(question);
-                        }
-                    }
+                    player.ConsumableInventory.UseConsumable(question);
                     Console.Clear();
                     AskQuestion();
                     return ProvideAnswer(player, enemy, question);

@@ -20,7 +20,13 @@ namespace TriviaFight.Consumables
         }
         public override void Use(Enemy enemy)
         {
-            enemy.TemporaryStatModifiers.AddModifier(new StatModifier("Speed", 2, -1 * enemy.Speed));
+            enemy.TemporaryStatModifiers.AddModifier(new StatModifier("Speed", 1, -1 * enemy.Speed));
+            Quantity--;
+            Console.WriteLine("The enemy slips on your well placed banana peeel and gains no speed until your next attack!" +
+                "\nPress any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+
         }
 
     }

@@ -20,12 +20,12 @@ namespace TriviaFight
             var activeModifiers = new List<StatModifier>();
             foreach (StatModifier modifier in statModifiers)
             {
-                if (modifier.TurnsRemaining > 0)
+                if (modifier.TurnsRemaining >= 0)
                 {
                     activeModifiers.Add(modifier);
                 }
             }
-            statModifiers = activeModifiers;
+            this.statModifiers = activeModifiers;
         }
         public void CalculateStats()
         {
@@ -43,7 +43,7 @@ namespace TriviaFight
                         break;
                 }
             }
-            TemporarySpeed += _tempSpeed;
+            this.TemporarySpeed += _tempSpeed;
         }
         public void DecrementTurnsRemaining()
         {

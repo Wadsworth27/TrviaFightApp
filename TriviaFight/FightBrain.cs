@@ -127,7 +127,7 @@
                         }
                         break;
                     case "5":
-                        player.ConsumableInventory.UseConsumable(enemy);
+                        player.ConsumableInventory.UseConsumable(player,enemy);
                         return SetMode(player,enemy);
 
 
