@@ -1,4 +1,6 @@
-﻿namespace TriviaFight
+﻿using TriviaFight.Equipment;
+
+namespace TriviaFight
 {
     public static class MainMenu
     {
@@ -87,7 +89,7 @@
                     break;
                 case 3:
                     FightBrain fb = new();
-                    Enemy enemy = new Enemy(100, 10,50);
+                    Enemy enemy = new Enemy(10, 10,50,new RustySpoon());
                     player.Reset();
                     player.Weapon.Reset();
                     fb.PlayGame(player, enemy);

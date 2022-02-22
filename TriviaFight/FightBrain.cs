@@ -4,6 +4,7 @@
     {
         public virtual void PlayGame(Player player, Enemy enemy)
         {
+            Random random = new();
             bool gameon = true;
             while (gameon)
             {
@@ -15,7 +16,7 @@
                         while (enemy.Stamina >= 100 & player.Hitpoints>0)
                         {
                             enemy.Stamina-=100;
-                            enemy.Attack(player);
+                            enemy.TakeTurn(player);
                             Thread.Sleep(2000);
                         }
                         if (player.Hitpoints <= 0)
@@ -54,7 +55,7 @@
                     if (question.AnswerQuestion(player, enemy, question))
                     {
                         AnswerSuccess(mode, player, enemy);
-                        if (enemy.HitPoints <= 0)
+                        if (enemy.Hitpoints <= 0)
                         {
                             Console.WriteLine("You have defeated the enemy!");
                             gameon = false;
@@ -64,7 +65,7 @@
                     }
                     player.TemporaryStatModifiers.DecrementTurnsRemaining();
                     enemy.TemporaryStatModifiers.DecrementTurnsRemaining();
-                    Console.WriteLine($"Player Hitpoints : {player.Hitpoints}\nEnemy Hitpoints: {enemy.HitPoints}\n\nHit any key to continue");
+                    Console.WriteLine($"Player Hitpoints : {player.Hitpoints}\nEnemy Hitpoints: {enemy.Hitpoints}\n\nHit any key to continue");
                     string? _ = Console.ReadLine();
                     Console.Clear();
                 }

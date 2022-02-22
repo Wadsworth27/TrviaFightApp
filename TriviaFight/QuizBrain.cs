@@ -24,7 +24,7 @@ namespace TriviaFight
             foreach (Question question in questionSet.Questions)
             {
                 
-                if (question.AnswerQuestion(player, new Enemy(25, 1, 50), question))
+                if (question.AnswerQuestion(player, new Enemy(), question))
                 {
 
                     this.QuestionsAsked += 1;

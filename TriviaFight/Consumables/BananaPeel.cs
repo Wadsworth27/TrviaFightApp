@@ -10,7 +10,7 @@ namespace TriviaFight.Consumables
     {
         public override string Name { get; set; } = "Banana Peel";
 
-        public override string Description { get; } = "Banana peels make it hard for the enemy to get to you, speed = 0 for 1 turn ";
+        public override string Description { get; } = "Banana peel reduces enemy's speed to 0 until you answer your next quesiton ";
 
         public override string Target { get; set; } = "Enemy";
         public override int Quantity { get; set; } = 1;

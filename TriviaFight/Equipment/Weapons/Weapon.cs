@@ -16,11 +16,20 @@ namespace TriviaFight
         }
 
         public abstract void Attack(Enemy enemy);
+        public virtual void Attack(Player player)
+        {
+
+        }
         public abstract void Defend(Player player);
+        public virtual void Defend(Enemy enemy)
+        {
+
+        }
 
         public abstract void ChargeSpecial(int charge);
 
         public abstract void SpecialAttack(Player player, Enemy enemy);
+        public abstract void SpecialAttack(Enemy enemy, Player player);
         public abstract void UseSpecial();
 
     }

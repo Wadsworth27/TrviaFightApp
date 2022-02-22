@@ -6,13 +6,16 @@ namespace TriviaFight
     public class Enemy : ITargetable
     {
         Random random = new();
-        public string Name { get; set; } = "Enemy";
-        public int HitPoints { get; set; }
-        public int DamagePotential { get; set; }
-        public int HitPercentage { get; set; } = 100;
-        public int Stamina { get; set; } = 0;
+        public virtual string Name { get; set; } = "Enemy";
+        public virtual int Hitpoints { get; set; }
+        public virtual int MaxHitpoints { get; set; }
+        public virtual int DamagePotential { get; set; }
+        public virtual int HitPercentage { get; set; } = 100;
+        public virtual int DefendPercentage { get; set; } = 60;
+        public virtual int Stamina { get; set; } = 0;
+        public virtual Weapon Weapon { get; set; }
         private int _speed;
-        public int Speed
+        public virtual int Speed
         {
             get
             {
@@ -27,18 +30,21 @@ namespace TriviaFight
 
         public TemporaryStatModifiers TemporaryStatModifiers{ get; set; } = new();
 
-        public Enemy(int hitpoints, int damage, int speed)
+        public Enemy(int hitpoints, int damage, int speed,Weapon weapon)
         {
-            this.HitPoints = hitpoints;
+            this.Hitpoints = hitpoints;
+            this.MaxHitpoints = hitpoints;
             this.DamagePotential = damage;
             _speed = speed;
+            Weapon = weapon;
         }
-
-        public virtual int DoDamage()
+        public Enemy()
         {
-            return random.Next(this.DamagePotential + 1);
+            Hitpoints = 25;
+            MaxHitpoints = 25;
+            Speed = 50;
         }
-        public virtual void Attack(Player player)
+        public virtual void TakeTurn(Player player)
         {
             if (player.Blocking == true)
             {
@@ -47,15 +53,27 @@ namespace TriviaFight
             }
             else
             {
-                if (random.Next(100) <= this.HitPercentage)
+                int randomint = random.Next(100);
+                if (randomint <= this.DefendPercentage)
                 {
-                    int damage = random.Next(1, this.DamagePotential);
-                    player.Hitpoints -= damage;
-                    Console.WriteLine($"Enemy hit {player} for {damage} points of damage!");
+                    Weapon.Defend(this);
+                }
+                else if ( randomint<= this.HitPercentage)
+                {
+                    if (Weapon.SpecialMeter == 100)
+                    {
+                        Weapon.UseSpecial();
+                        Weapon.SpecialAttack(this, player);
+                    } else
+                    Weapon.Attack(player);
                 }
                 else
                 {
                     Console.WriteLine("Enemy Missed!");
+                    if (Weapon.SpecialMeter == 100)
+                    {
+                        Weapon.UseSpecial();
+                    }
                 }
             }
         }
