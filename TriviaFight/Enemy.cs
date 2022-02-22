@@ -7,9 +7,8 @@ namespace TriviaFight
     {
         Random random = new();
         public virtual string Name { get; set; } = "Enemy";
-        public virtual int Hitpoints { get; set; }
-        public virtual int MaxHitpoints { get; set; }
-        public virtual int DamagePotential { get; set; }
+        public virtual int Hitpoints { get; set; } = 25;
+        public virtual int MaxHitpoints { get; set; } = 25;
         public virtual int HitPercentage { get; set; } = 100;
         public virtual int DefendPercentage { get; set; } = 60;
         public virtual int Stamina { get; set; } = 0;
@@ -30,19 +29,15 @@ namespace TriviaFight
 
         public TemporaryStatModifiers TemporaryStatModifiers{ get; set; } = new();
 
-        public Enemy(int hitpoints, int damage, int speed,Weapon weapon)
+        public Enemy(int hitpoints, int speed,Weapon weapon)
         {
             this.Hitpoints = hitpoints;
             this.MaxHitpoints = hitpoints;
-            this.DamagePotential = damage;
             _speed = speed;
             Weapon = weapon;
         }
         public Enemy()
         {
-            Hitpoints = 25;
-            MaxHitpoints = 25;
-            Speed = 50;
         }
         public virtual void TakeTurn(Player player)
         {

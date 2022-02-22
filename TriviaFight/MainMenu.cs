@@ -1,4 +1,5 @@
 ﻿using TriviaFight.Equipment;
+using TriviaFight.Masters;
 
 namespace TriviaFight
 {
@@ -81,7 +82,11 @@ namespace TriviaFight
             switch (choice)
             {
                 case 1:
-                    //some code for masters
+                    FightBrain fb1 = new();
+                    BruceLee enemy1 = new BruceLee();
+                    player.Reset();
+                    player.Weapon.Reset();
+                    fb1.PlayGame(player, enemy1);
                     break;
                 case 2:
                     QuizBrain qb = new();
@@ -89,7 +94,7 @@ namespace TriviaFight
                     break;
                 case 3:
                     FightBrain fb = new();
-                    Enemy enemy = new Enemy(10, 10,50,new RustySpoon());
+                    Enemy enemy = new Enemy(10,50,new RustySpoon());
                     player.Reset();
                     player.Weapon.Reset();
                     fb.PlayGame(player, enemy);

@@ -117,16 +117,17 @@
                 if (random.Next(100) < hitPercentage)
                 {
                     heal = random.Next(1, this.DamagePotential + 1);
-                    Console.WriteLine($"You healed for {heal} points of damage with form {++hits}!");
+                    Console.WriteLine($"Enemy healed for {heal} points of damage with form {++hits}!");
                     total += heal;
                     hitPercentage /= 2;
+                    Thread.Sleep(1000);
                 }
                 else
                 {
                     break;
                 }
             }
-            Console.WriteLine($"\nYou healed for {total} points of damage over {hits} forms!");
+            Console.WriteLine($"\nYou healed for {total} points of damage over {hits} forms!\n");
             enemy.Hitpoints = Math.Min(enemy.MaxHitpoints, enemy.Hitpoints + total);
         }
         public override string ToString()
