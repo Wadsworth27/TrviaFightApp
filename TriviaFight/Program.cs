@@ -7,7 +7,6 @@ class Program
     {
         Player player;
 
-
         MainMenu.DisplayHomesceen();
         string NeworLoad = MainMenu.NewOrLoadGame();
 

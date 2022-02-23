@@ -1,5 +1,6 @@
 ﻿using TriviaFight.Equipment;
 using TriviaFight.Masters;
+using TriviaFight.Shop;
 
 namespace TriviaFight
 {
@@ -100,7 +101,8 @@ namespace TriviaFight
                     fb.PlayGame(player, enemy);
                     break;
                 case 4:
-                    //Some Shop Code
+                    
+                    Shop.Shop.LoadShop(player);
                     break;
                 case 5:
                     player.ChooseWeapon();

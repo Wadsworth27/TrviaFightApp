@@ -26,6 +26,10 @@ namespace TriviaFight.Consumables
             Console.ReadKey();
             Console.Clear();
         }
+        public CupOfCoffee(int quantity) : base(quantity)
+        {
+
+        }
 
     }
 }

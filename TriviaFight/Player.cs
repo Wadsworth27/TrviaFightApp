@@ -1,5 +1,6 @@
 ﻿using TriviaFight.Consumables;
 using TriviaFight.Equipment;
+using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
@@ -35,10 +36,11 @@ namespace TriviaFight
             Name = name;
             RustySpoon spoon = new();
             WeaponList.Add(spoon);
+            WeaponList.Add(new Nunchaku());
             Weapon = spoon;
-            ClarityPotion rw = new();
-            CupOfCoffee coffee = new();
-            BananaPeel bp = new();
+            ClarityPotion rw = new(5);
+            CupOfCoffee coffee = new(5);
+            BananaPeel bp = new(5);
             ConsumableInventory.AddConsumable(rw);
             ConsumableInventory.AddConsumable(coffee);
             ConsumableInventory.AddConsumable(bp);

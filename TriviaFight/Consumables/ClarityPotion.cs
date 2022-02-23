@@ -7,9 +7,9 @@
         public override string Target { get; set; } = "Question";
         public override string Description { get; } = "Remove one wrong answer";
 
-        public void SetQuanity(int newQuantity)
+        public ClarityPotion(int quantity) : base(quantity)
         {
-            Quantity = newQuantity;
+
         }
 
         public override void Use(Question question)

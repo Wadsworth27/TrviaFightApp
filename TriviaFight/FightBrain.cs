@@ -28,7 +28,7 @@
                         player.Stamina += player.Speed;
                         enemy.Stamina += enemy.Speed;
                         Console.WriteLine($"Charging stamina based on speed:\n\nPlayer Stamina: {player.Stamina}\nEnemy Stamina: {enemy.Stamina}");
-                        Thread.Sleep(1500);
+                        Thread.Sleep(2500);
                         Console.Clear();
                     }
                     if (gameon == false)

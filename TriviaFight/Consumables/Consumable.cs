@@ -25,6 +25,11 @@ namespace TriviaFight.Consumables
 
         }
         public override abstract string ToString();
+        public virtual int Price { get; set; } = 10;
+        public Consumable(int quantity)
+        {
+            Quantity = quantity;
+        }
 
     }
 }

@@ -9,8 +9,8 @@ namespace TriviaFight
         public virtual string Name { get; set; } = "Enemy";
         public virtual int Hitpoints { get; set; } = 25;
         public virtual int MaxHitpoints { get; set; } = 25;
-        public virtual int HitPercentage { get; set; } = 100;
-        public virtual int DefendPercentage { get; set; } = 60;
+        public virtual int HitPercentage { get; set; } = 50;
+        public virtual int DefendPercentage { get; set; } = 20;
         public virtual int Stamina { get; set; } = 0;
         public virtual Weapon Weapon { get; set; }
         private int _speed;

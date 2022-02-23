@@ -28,6 +28,10 @@ namespace TriviaFight.Consumables
             Console.Clear();
 
         }
+        public BananaPeel(int quantity): base(quantity)
+        {
+
+        }
 
     }
 }

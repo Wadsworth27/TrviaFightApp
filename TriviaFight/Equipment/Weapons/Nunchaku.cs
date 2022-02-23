@@ -127,7 +127,7 @@
                     break;
                 }
             }
-            Console.WriteLine($"\nYou healed for {total} points of damage over {hits} forms!\n");
+            Console.WriteLine($"\nEnemy healed for {total} points of damage over {hits} forms!\n");
             enemy.Hitpoints = Math.Min(enemy.MaxHitpoints, enemy.Hitpoints + total);
         }
         public override string ToString()
