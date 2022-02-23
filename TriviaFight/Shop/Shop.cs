@@ -16,8 +16,8 @@ namespace TriviaFight.Shop
             CreateShopInventory();
             ShopInventory.PurchaseConsumable(player);
             Console.Clear();
-            MainMenu.Menu();
-            
+            MainMenu.GameHandler(MainMenu.Menu(), player);
+
         }
         public static void CreateShopInventory()
         {

@@ -40,10 +40,8 @@ namespace TriviaFight
             Weapon = spoon;
             ClarityPotion rw = new(5);
             CupOfCoffee coffee = new(5);
-            BananaPeel bp = new(5);
             ConsumableInventory.AddConsumable(rw);
             ConsumableInventory.AddConsumable(coffee);
-            ConsumableInventory.AddConsumable(bp);
 
         }
         public void EquipWeapon(Weapon w)
