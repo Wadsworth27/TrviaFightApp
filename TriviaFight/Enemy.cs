@@ -3,9 +3,9 @@ using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
-    public class Enemy : ITargetable
+    public class Enemy
     {
-        Random random = new();
+        readonly Random random = new();
         public virtual string Name { get; set; } = "Enemy";
         public virtual int Hitpoints { get; set; } = 25;
         public virtual int MaxHitpoints { get; set; } = 25;

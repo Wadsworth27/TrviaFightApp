@@ -3,7 +3,7 @@ using TriviaFight.Consumables;
 
 namespace TriviaFight
 {
-    public class Question:ITargetable
+    public class Question
     {
         public Random random = new Random();
         public string category;

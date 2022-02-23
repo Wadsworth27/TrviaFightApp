@@ -4,7 +4,7 @@ using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
-    public class Player:ITargetable
+    public class Player
     {
 
         public string Name { get; set; } = "Steve";
