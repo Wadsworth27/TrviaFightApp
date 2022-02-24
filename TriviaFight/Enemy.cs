@@ -49,7 +49,7 @@ namespace TriviaFight
             else
             {
                 int randomint = random.Next(100);
-                if (randomint <= this.DefendPercentage)
+                if (randomint <= this.DefendPercentage & Weapon.SpecialMeter<100)
                 {
                     Weapon.Defend(this);
                 }
@@ -67,6 +67,7 @@ namespace TriviaFight
                     Console.WriteLine("Enemy Missed!");
                     if (Weapon.SpecialMeter == 100)
                     {
+                        Console.WriteLine("Looks like they tried to take a big shot...");
                         Weapon.UseSpecial();
                     }
                 }

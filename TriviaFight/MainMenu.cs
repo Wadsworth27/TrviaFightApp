@@ -60,8 +60,8 @@ namespace TriviaFight
 
             Console.WriteLine("Choose your game mode:\n\n" +
                 "1. Challenge a category master. Defeat all masters to become the ultimate champion!\n" +
-                "2. Trivia Challenge - 10 question general knowledge trivia. Earn weapons and items!\n" +
-                "3. Random Battle - Battle a random opponent from history to gain experience and gold!\n" +
+                "2. Trivia Challenge - 10 question general knowledge trivia. Earn gold!\n" +
+                "3. Random Battle - Battle a random opponent from history to gain experience and find items!\n" +
                 "4. Shop - Find new items and power ups\n" +
                 "5. Change Weapons\n\n");
             while (true)
