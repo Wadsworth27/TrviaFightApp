@@ -6,7 +6,7 @@ namespace TriviaFight
     {
         readonly Random random = new();
         public virtual string Name { get; set; } = "Enemy";
-        public virtual int Hitpoints { get; set; } = 25;
+        public virtual int Hitpoints { get; set; } = 1;
         public virtual int MaxHitpoints { get; set; } = 25;
         public virtual int HitPercentage { get; set; } = 50;
         public virtual int DefendPercentage { get; set; } = 20;
@@ -17,7 +17,6 @@ namespace TriviaFight
         {
             get
             {
-                Console.WriteLine($"Temp Speed: {TemporaryStatModifiers.TemporarySpeed}, Speed:{_speed }");
                 return _speed + TemporaryStatModifiers.TemporarySpeed;
             }
             set
@@ -73,7 +72,7 @@ namespace TriviaFight
                 }
             }
         }
-        public virtual void DropLoot(Player player)
+        public virtual void DefeatDrops(Player player)
         {
             Nunchaku nc = new();
             Console.WriteLine("Weapon found!");
@@ -93,6 +92,9 @@ namespace TriviaFight
             {
                 player.AddWeapon(nc);
             }
+            player.Experience += 100;
+            player.CheckForLevelUp();
+            Console.WriteLine("Player gained 100 Exp");
         }
     }
 }

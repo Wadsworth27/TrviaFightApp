@@ -15,7 +15,7 @@
         }
         public override void Use(Player player)
         {
-            player.TemporaryStatModifiers.AddModifier(new StatModifier("Speed", 10, 3));
+            player.TemporaryStatModifiers.AddModifier(new StatModifier("Speed", 3, 10));
             Quantity--;
             Console.WriteLine("You chug a big cup of coffee and feel very alert!\nPress any key to continue.");
             Console.ReadKey();

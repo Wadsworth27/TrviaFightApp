@@ -10,7 +10,6 @@ namespace TriviaFight
         public string Name { get; set; } = "Steve";
         public int MaxHitpoints { get; set; } = 50;
         public int Hitpoints { get; set; } = 50;
-        public int Level { get; set; } = 1;
         public Weapon Weapon { get; set; }
         public List<Weapon> WeaponList = new List<Weapon>();
         public bool Blocking { get; set; } = false;
@@ -18,6 +17,7 @@ namespace TriviaFight
         public ConsumableInventory ConsumableInventory = new ConsumableInventory();
         private int speed = 50;
         public int Gold { get; set; } = 1500;
+        public int Experience {get;set;} = 0;
         public int Speed
         {
             get
@@ -30,6 +30,14 @@ namespace TriviaFight
             }
         }
         public int Stamina { get; set; } = 0;
+        public int Level { get; set; } = 1;
+        private Dictionary<int, int> LevelExperienceRequired = new Dictionary<int, int>
+        {
+            { 1, 0 },
+            { 2, 100 },
+            {3,300},
+            { 4,1000000}
+        };
         public TemporaryStatModifiers TemporaryStatModifiers { get; set; } = new();
 
         public Player(string name)
@@ -37,7 +45,6 @@ namespace TriviaFight
             Name = name;
             RustySpoon spoon = new();
             WeaponList.Add(spoon);
-            WeaponList.Add(new Nunchaku());
             Weapon = spoon;
             ClarityPotion rw = new(5);
             CupOfCoffee coffee = new(5);
@@ -101,7 +108,18 @@ namespace TriviaFight
         }
         public void DisplayInfo()
         {
-            Console.WriteLine($"Player Name : {Name}\n\nLevel : {Level}     Gold: {Gold}\nHitpoints : {MaxHitpoints}\nWeapon : {Weapon}\n\n\n");
+            Console.WriteLine($"Player Name : {Name}\n\nLevel : {Level}     Gold: {Gold}    Experience:{Experience}\nHitpoints : {MaxHitpoints}     Speed:{Speed}\nWeapon : {Weapon}\n\n\n");
+        }
+        public void CheckForLevelUp()
+        {
+            while (Experience >= LevelExperienceRequired[Level + 1])
+            {
+                Level++;
+                MaxHitpoints += 5;
+                Hitpoints += 5;
+                Speed += 5;
+                Console.WriteLine($"You have leveled up to level {Level}");
+            }
         }
 
 

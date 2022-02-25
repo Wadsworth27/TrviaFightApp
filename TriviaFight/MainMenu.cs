@@ -53,7 +53,7 @@ namespace TriviaFight
         {
 
             Console.WriteLine("Choose your game mode:\n\n" +
-                "1. Challenge a category master. Defeat all masters to become the ultimate champion!\n" +
+                "1. Challenge a category master. Defeat all masters to become the ultimate champion!\n   Next Master: Bruce Lee    Recomended level: 5\n\n" +
                 "2. Trivia Challenge - 10 question general knowledge trivia. Earn gold!\n" +
                 "3. Random Battle - Battle a random opponent from history to gain experience and find items!\n" +
                 "4. Shop - Find new items and power ups\n" +
@@ -89,7 +89,7 @@ namespace TriviaFight
                     break;
                 case 3:
                     FightBrain fb = new();
-                    Enemy enemy = new Enemy(10, 50, new RustySpoon());
+                    Enemy enemy = new Enemy(1, 50, new RustySpoon());
                     player.Reset();
                     player.Weapon.Reset();
                     fb.PlayGame(player, enemy);
