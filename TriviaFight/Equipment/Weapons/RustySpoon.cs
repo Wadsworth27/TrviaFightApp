@@ -8,7 +8,7 @@
         public override int SpecialChargeRate { get; set; } = 50;
         public override int SpecialMeter
         {
-            get { return Math.Min(specialMeter,100); }
+            get { return Math.Min(specialMeter, 100); }
         }
         public override int SpeedModifier { get; set; } = 10;
         public override string SpecialAttackDescription { get; set; } =

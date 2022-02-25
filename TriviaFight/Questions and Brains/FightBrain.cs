@@ -13,9 +13,9 @@
                 {
                     while (player.Stamina < 100)
                     {
-                        while (enemy.Stamina >= 100 & player.Hitpoints>0)
+                        while (enemy.Stamina >= 100 & player.Hitpoints > 0)
                         {
-                            enemy.Stamina-=100;
+                            enemy.Stamina -= 100;
                             enemy.TakeTurn(player);
                             Thread.Sleep(2000);
                         }
@@ -35,10 +35,10 @@
                     {
                         break;
                     }
-                    
-                    
+
+
                     player.Stamina -= 100;
-                    string mode = SetMode(player,enemy);
+                    string mode = SetMode(player, enemy);
                     //Check if player chose to exit in mode selection
                     if (mode == "Quit")
                     {
@@ -128,8 +128,8 @@
                         }
                         break;
                     case "5":
-                        player.ConsumableInventory.UseConsumable(player,enemy);
-                        return SetMode(player,enemy);
+                        player.ConsumableInventory.UseConsumable(player, enemy);
+                        return SetMode(player, enemy);
 
 
                     case "9":

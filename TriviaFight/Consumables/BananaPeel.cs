@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaFight.Consumables
+﻿namespace TriviaFight.Consumables
 {
     public class BananaPeel : Consumable, IConsumable
     {
@@ -14,6 +8,7 @@ namespace TriviaFight.Consumables
 
         public override string Target { get; set; } = "Enemy";
         public override int Quantity { get; set; } = 1;
+        public override int Price { get; set; } = 100;
         public override string ToString()
         {
             return Name;
@@ -28,7 +23,7 @@ namespace TriviaFight.Consumables
             Console.Clear();
 
         }
-        public BananaPeel(int quantity): base(quantity)
+        public BananaPeel(int quantity) : base(quantity)
         {
 
         }

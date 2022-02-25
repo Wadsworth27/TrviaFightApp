@@ -1,5 +1,4 @@
 ﻿using APiHandler;
-using TriviaFight.Consumables;
 
 namespace TriviaFight
 {
@@ -71,7 +70,8 @@ namespace TriviaFight
                     AskQuestion();
                     return ProvideAnswer(player, enemy, question);
 
-                } else 
+                }
+                else
                 {
                     Console.WriteLine("Invalid Input, please try again");
                     return ProvideAnswer(player, enemy, question);

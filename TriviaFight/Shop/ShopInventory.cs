@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TriviaFight.Consumables;
+﻿using TriviaFight.Consumables;
 
 namespace TriviaFight.Shop
 {
-    public class ShopInventory:ConsumableInventory
+    public class ShopInventory : ConsumableInventory
     {
         public void PurchaseConsumable(Player player)
         {
             bool exit = false;
-            while(!exit){
+            while (!exit)
+            {
                 if (AllConsumables.Any())
                 {
+                    Console.WriteLine($"\nGold Avalible: {player.Gold}\n\n\n");
                     Shop.ShopInventory.DisplayConsumables();
                     Console.WriteLine($"{AllConsumables.Count + 1}: Exit\n");
                     int choice = 0;
@@ -24,10 +21,26 @@ namespace TriviaFight.Shop
                     }
                     if (choice <= AllConsumables.Count)
                     {
-                        AllConsumables[choice - 1].Quantity = 1;
-                        player.ConsumableInventory.AddConsumable(AllConsumables[choice - 1]);
-                        Console.Clear();
-                        Shop.CreateShopInventory();
+                        var chosenConsumable = AllConsumables[choice - 1];
+                        if (chosenConsumable.Price <= player.Gold)
+                        {
+                            chosenConsumable.Quantity = 1;
+                            player.ConsumableInventory.AddConsumable(chosenConsumable);
+                            player.Gold -= chosenConsumable.Price;
+                            Console.WriteLine($"\n\nYou have purchased {chosenConsumable} for {chosenConsumable.Price} gold\n" +
+                                $"Press any key to continue");
+                            Console.ReadKey();
+                            Console.Clear();
+                            Shop.CreateShopInventory();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry, you don't have enough gold for that.\n\n" +
+                                "Press any key to continue");
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+
                     }
                     else
                     {
@@ -35,6 +48,26 @@ namespace TriviaFight.Shop
                     }
                 }
             }
+        }
+        public override void DisplayConsumables()
+        {
+            RemoveEmptyConsumables();
+            if (AllConsumables.Count == 0)
+            {
+                Console.WriteLine("We are sold out of everything... Supply chain issues.\nPress any key to continue...");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                int counter = 1;
+                foreach (Consumable c in AllConsumables)
+                {
+                    Console.WriteLine($"{counter}: {c}\nPrice: {c.Price} gp\nDescription:{c.Description}\n");
+                    counter++;
+                }
+            }
+
         }
     }
 }

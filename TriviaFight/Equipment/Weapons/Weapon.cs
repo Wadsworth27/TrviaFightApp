@@ -2,7 +2,7 @@
 
 namespace TriviaFight
 {
-    public abstract class Weapon:IWeapon
+    public abstract class Weapon : IWeapon
     {
         public virtual string Name { get; set; } = "Weapon";
         public virtual int DamagePotential { get; set; }
@@ -12,7 +12,7 @@ namespace TriviaFight
         public virtual int SpecialMeter { get; set; } = 0;
         public virtual void Reset()
         {
-            
+
         }
 
         public abstract void Attack(Enemy enemy);

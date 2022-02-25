@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TriviaFight.Equipment.Weapons;
+﻿using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight.Masters
 {
-    public class BruceLee:Enemy
+    public class BruceLee : Enemy
     {
         Random random = new();
 

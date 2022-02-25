@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaFight.Consumables
+﻿namespace TriviaFight.Consumables
 {
     public class ConsumableInventory
     {
@@ -27,7 +21,7 @@ namespace TriviaFight.Consumables
 
             }
         }
-        public void DisplayConsumables()
+        public virtual void DisplayConsumables()
         {
             RemoveEmptyConsumables();
             if (AllConsumables.Count == 0)
@@ -60,7 +54,7 @@ namespace TriviaFight.Consumables
             }
             return targetList;
         }
-        public List<Consumable> GetListOfConsumablesByTargetType(string target1,string target2)
+        public List<Consumable> GetListOfConsumablesByTargetType(string target1, string target2)
         {
             RemoveEmptyConsumables();
             List<Consumable> targetList = new();
@@ -73,7 +67,7 @@ namespace TriviaFight.Consumables
             }
             return targetList;
         }
-        public void DisplayConsumables(List<Consumable> consumables)
+        public virtual void DisplayConsumables(List<Consumable> consumables)
         {
             RemoveEmptyConsumables();
             if (consumables.Count == 0)
@@ -97,7 +91,7 @@ namespace TriviaFight.Consumables
         {
             if (AllConsumables.Any())
             {
-                for (int i=AllConsumables.Count-1;i>=0; i--)
+                for (int i = AllConsumables.Count - 1; i >= 0; i--)
                 {
                     if (AllConsumables[i].Quantity == 0)
                     {
@@ -106,11 +100,11 @@ namespace TriviaFight.Consumables
 
                 }
             }
-            
+
         }
         public void UseConsumable(Player player, Enemy enemy)
         {
-            var playerConsumables = GetListOfConsumablesByTargetType("Player","Enemy");
+            var playerConsumables = GetListOfConsumablesByTargetType("Player", "Enemy");
             DisplayConsumables(playerConsumables);
             if (playerConsumables.Any())
             {
@@ -125,11 +119,12 @@ namespace TriviaFight.Consumables
                     if (playerConsumables[choice - 1].Target == "Player")
                     {
                         playerConsumables[choice - 1].Use(player);
-                    }else
+                    }
+                    else
                     {
                         playerConsumables[choice - 1].Use(enemy);
                     }
-                    
+
                 }
             }
         }
@@ -148,7 +143,8 @@ namespace TriviaFight.Consumables
                 if (choice <= playerConsumables.Count)
                 {
                     playerConsumables[choice - 1].Use(enemy);
-                } else
+                }
+                else
                 {
                     Console.Clear();
                 }

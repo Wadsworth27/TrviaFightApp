@@ -10,7 +10,7 @@
         private int specialMeter = 0;
         public override int SpecialMeter
         {
-            get { return Math.Min(specialMeter,100); }
+            get { return Math.Min(specialMeter, 100); }
         }
         public override string SpecialAttackDescription { get; set; } =
             "Heal player by up to 5 points while doing 5 points of damage to enemy";
@@ -22,7 +22,7 @@
             Attack(enemy);
 
         }
-        public override void SpecialAttack(Enemy enemy,Player player)
+        public override void SpecialAttack(Enemy enemy, Player player)
         {
             this.DamagePotential += 1;
             Console.WriteLine("Enemy's damage and healing potential has increased by 1 for the duration of this fight!");

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaFight.Consumables
+﻿namespace TriviaFight.Consumables
 {
     public abstract class Consumable
     {
         public abstract string Name { get; set; }
-        public abstract string Description { get;}
+        public abstract string Description { get; }
         public abstract string Target { get; set; }
         public abstract int Quantity { get; set; }
         public virtual void Use(Player player)

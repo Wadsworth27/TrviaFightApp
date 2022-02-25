@@ -1,6 +1,4 @@
-﻿using TriviaFight.Consumables;
-
-namespace TriviaFight;
+﻿namespace TriviaFight;
 class Program
 {
     static void Main(string[] args)

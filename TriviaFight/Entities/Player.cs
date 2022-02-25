@@ -9,14 +9,15 @@ namespace TriviaFight
 
         public string Name { get; set; } = "Steve";
         public int MaxHitpoints { get; set; } = 50;
-        public int Hitpoints { get; set; } = 25;
+        public int Hitpoints { get; set; } = 50;
         public int Level { get; set; } = 1;
         public Weapon Weapon { get; set; }
         public List<Weapon> WeaponList = new List<Weapon>();
         public bool Blocking { get; set; } = false;
-        public List<Consumable> Consumables= new List<Consumable>();
+        public List<Consumable> Consumables = new List<Consumable>();
         public ConsumableInventory ConsumableInventory = new ConsumableInventory();
         private int speed = 50;
+        public int Gold { get; set; } = 1500;
         public int Speed
         {
             get
@@ -100,7 +101,7 @@ namespace TriviaFight
         }
         public void DisplayInfo()
         {
-            Console.WriteLine($"Player Name : {Name}\n\nLevel : {Level}\nHitpoints : {MaxHitpoints}\nWeapon : {Weapon}\n\n\n");
+            Console.WriteLine($"Player Name : {Name}\n\nLevel : {Level}     Gold: {Gold}\nHitpoints : {MaxHitpoints}\nWeapon : {Weapon}\n\n\n");
         }
 
 

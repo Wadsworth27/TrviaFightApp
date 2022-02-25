@@ -1,5 +1,4 @@
-﻿using TriviaFight.Equipment;
-using TriviaFight.Equipment.Weapons;
+﻿using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
@@ -27,9 +26,9 @@ namespace TriviaFight
             }
         }
 
-        public TemporaryStatModifiers TemporaryStatModifiers{ get; set; } = new();
+        public TemporaryStatModifiers TemporaryStatModifiers { get; set; } = new();
 
-        public Enemy(int hitpoints, int speed,Weapon weapon)
+        public Enemy(int hitpoints, int speed, Weapon weapon)
         {
             this.Hitpoints = hitpoints;
             this.MaxHitpoints = hitpoints;
@@ -49,18 +48,19 @@ namespace TriviaFight
             else
             {
                 int randomint = random.Next(100);
-                if (randomint <= this.DefendPercentage & Weapon.SpecialMeter<100)
+                if (randomint <= this.DefendPercentage & Weapon.SpecialMeter < 100)
                 {
                     Weapon.Defend(this);
                 }
-                else if ( randomint<= this.HitPercentage)
+                else if (randomint <= this.HitPercentage)
                 {
                     if (Weapon.SpecialMeter == 100)
                     {
                         Weapon.UseSpecial();
                         Weapon.SpecialAttack(this, player);
-                    } else
-                    Weapon.Attack(player);
+                    }
+                    else
+                        Weapon.Attack(player);
                 }
                 else
                 {
