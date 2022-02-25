@@ -21,7 +21,7 @@ namespace TriviaFight
             while (true)
             {
                 Console.WriteLine("1. New Game\n\n");
-                Console.WriteLine("2. Load Game\n");
+                Console.WriteLine("2. Load Game -- Coming soon!\n");
                 string? newOrLoad = Console.ReadLine();
                 if (newOrLoad == "1")
                 {
