@@ -8,7 +8,18 @@ namespace TriviaFight
         public virtual string Name { get; set; } = "Enemy";
         public virtual int Hitpoints { get; set; } = 1;
         public virtual int MaxHitpoints { get; set; } = 25;
-        public virtual int HitPercentage { get; set; } = 50;
+        private int _hitPercentage = 100;
+        public virtual int HitPercentage
+        {
+            get
+            {
+                return _hitPercentage + TemporaryStatModifiers.TemporaryHitPercentage;
+            }
+            set
+            {
+                _hitPercentage = value;
+            }
+        }
         public virtual int DefendPercentage { get; set; } = 20;
         public virtual int Stamina { get; set; } = 0;
         public virtual int ExperienceReward { get; set; } = 100;
@@ -93,9 +104,9 @@ namespace TriviaFight
             {
                 player.AddWeapon(nc);
             }
-            player.Experience += 100;
+            player.Experience += ExperienceReward;
             player.CheckForLevelUp();
-            Console.WriteLine("Player gained 100 Exp");
+            Console.WriteLine($"Player gained {ExperienceReward} Exp");
         }
     }
 }

@@ -47,6 +47,8 @@ namespace TriviaFight
             Weapon = spoon;
             ClarityPotion rw = new(5);
             CupOfCoffee coffee = new(5);
+            PocketSand ps = new(5);
+            ConsumableInventory.AddConsumable(ps);
             ConsumableInventory.AddConsumable(rw);
             ConsumableInventory.AddConsumable(coffee);
 

@@ -27,7 +27,7 @@
                         }
                         player.Stamina += player.Speed;
                         enemy.Stamina += enemy.Speed;
-                        Console.WriteLine($"Players are charging stamina based on speed:\n\n{player.Name} Stamina: {player.Stamina}\n{enemy.Name} Stamina: {enemy.Stamina}\n\n100 stamina required per attack.\n\n");
+                        Console.WriteLine($"Players are charging stamina based on speed:\n\n{player.Name} Stamina: {player.Stamina}(+{player.Speed})\n{enemy.Name} Stamina: {enemy.Stamina}+({enemy.Speed})\n\n100 stamina required per attack.\n\n");
                         Thread.Sleep(2500);
                         Console.Clear();
                     }
