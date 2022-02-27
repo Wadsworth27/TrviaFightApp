@@ -1,6 +1,5 @@
 ﻿using TriviaFight.Consumables;
 using TriviaFight.Equipment;
-using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
@@ -17,7 +16,7 @@ namespace TriviaFight
         public ConsumableInventory ConsumableInventory = new ConsumableInventory();
         private int speed = 50;
         public int Gold { get; set; } = 1500;
-        public int Experience {get;set;} = 0;
+        public int Experience { get; set; } = 0;
         public int Speed
         {
             get

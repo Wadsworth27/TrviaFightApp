@@ -1,4 +1,5 @@
 ﻿using APiHandler;
+using System.Web;
 
 namespace TriviaFight
 {
@@ -14,11 +15,12 @@ namespace TriviaFight
         public int guessesRemaining;
         public Question(QuestionModel q)
         {
-            category = q.Category;
-            difficulty = q.Difficulty;
-            questionText = q.Question.Replace("&quot;", "\"").Replace("&#039;", "'").Replace("&amp;", "&");
-            correctAnswer = q.Correct_Answer;
+            category = @q.Category;
+            difficulty = HttpUtility.HtmlDecode(q.Difficulty);
+            questionText = HttpUtility.HtmlDecode(q.Question);
+            correctAnswer = HttpUtility.HtmlDecode(q.Correct_Answer);
             incorrectAnswers = q.Incorrect_Answers;
+            incorrectAnswers.ForEach((string x) => HttpUtility.HtmlDecode(x));
             possibleAnswers = new();
             guessesRemaining = 1;
 

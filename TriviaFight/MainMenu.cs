@@ -1,4 +1,5 @@
 ﻿using TriviaFight.Equipment;
+using TriviaFight.Equipment.Weapons;
 using TriviaFight.Masters;
 
 namespace TriviaFight
@@ -89,9 +90,10 @@ namespace TriviaFight
                     break;
                 case 3:
                     FightBrain fb = new();
-                    Enemy enemy = new Enemy(1, 50, new RustySpoon());
+                    Enemy enemy = EnemyFactory();
                     player.Reset();
                     player.Weapon.Reset();
+                    Console.WriteLine($"A new challenger,{enemy.Name}, aproaches...\n");
                     fb.PlayGame(player, enemy);
                     break;
                 case 4:
@@ -105,6 +107,74 @@ namespace TriviaFight
                     Console.WriteLine("Oh man something went wrong");
                     break;
             }
+        }
+        public static Enemy EnemyFactory()
+        {
+            List<Weapon> EnemyWeapons = new()
+            {
+                new RustySpoon(),
+                new Nunchaku()
+
+            };
+            List<string> Names = new()
+            {
+                "Cleopatra",
+                "Queen Victoria",
+                "Alexander the Great",
+                "Julius Caesar",
+                "Napoleon Bonaparte",
+                "Genghis Khan",
+                "Catherine the Great",
+                "Mary Queen of Scots",
+                "Augustus",
+                "Ashoka",
+                "Charlemagne",
+                "Anne Boleyn"
+            };
+            Enemy enemy = new();
+            Random random = new();
+            Console.WriteLine("What kind of enemy would you like to face?\n\n1. Easy\n2. Medium\n3. Hard\n\n");
+            string response = Console.ReadLine();
+            switch (response)
+            {
+                case "1":
+
+                    enemy.Name = Names[random.Next(Names.Count)];
+                    enemy.MaxHitpoints = 25;
+                    enemy.Hitpoints = 25;
+                    enemy.Speed = 50;
+                    enemy.Weapon = EnemyWeapons[random.Next(EnemyWeapons.Count)];
+                    Console.Clear();
+                    return enemy;
+                    break;
+
+                case "2":
+
+                    enemy.Name = Names[random.Next(Names.Count)];
+                    enemy.MaxHitpoints = 50;
+                    enemy.Hitpoints = 50;
+                    enemy.Speed = 75;
+                    enemy.Weapon = EnemyWeapons[random.Next(EnemyWeapons.Count)];
+                    Console.Clear();
+                    return enemy;
+                    break;
+
+                case "3":
+
+                    enemy.Name = Names[random.Next(Names.Count)];
+                    enemy.MaxHitpoints = 100;
+                    enemy.Hitpoints = 100;
+                    enemy.Speed = 90;
+                    enemy.Weapon = EnemyWeapons[random.Next(EnemyWeapons.Count)];
+                    Console.Clear();
+                    return enemy;
+                    break;
+                default:
+                    Console.Clear();
+                    return EnemyFactory();
+
+            }
+            return enemy;
         }
     }
 }

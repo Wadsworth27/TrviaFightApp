@@ -11,6 +11,7 @@ namespace TriviaFight
         public virtual int HitPercentage { get; set; } = 50;
         public virtual int DefendPercentage { get; set; } = 20;
         public virtual int Stamina { get; set; } = 0;
+        public virtual int ExperienceReward { get; set; } = 100;
         public virtual Weapon Weapon { get; set; }
         private int _speed;
         public virtual int Speed

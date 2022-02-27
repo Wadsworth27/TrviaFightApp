@@ -27,7 +27,7 @@
                         }
                         player.Stamina += player.Speed;
                         enemy.Stamina += enemy.Speed;
-                        Console.WriteLine($"Player and Enemy are charging stamina based on speed:\n\nPlayer Stamina: {player.Stamina}\nEnemy Stamina: {enemy.Stamina}\n\n 100 stamina require per attack.");
+                        Console.WriteLine($"Players are charging stamina based on speed:\n\n{player.Name} Stamina: {player.Stamina}\n{enemy.Name} Stamina: {enemy.Stamina}\n\n100 stamina required per attack.\n\n");
                         Thread.Sleep(2500);
                         Console.Clear();
                     }
@@ -50,7 +50,8 @@
                     {
                         player.Weapon.UseSpecial();
                     }
-                    Console.WriteLine($"Mode: {mode}\n\n");
+                    Console.WriteLine($"Player Hitpoints: {player.Hitpoints}/{player.MaxHitpoints}\n" +
+                        $"{enemy.Name} Hitpoints:{enemy.Hitpoints}/{enemy.MaxHitpoints} Mode: {mode}\n\n");
 
                     if (question.AnswerQuestion(player, enemy, question))
                     {
@@ -65,7 +66,7 @@
                     }
                     player.TemporaryStatModifiers.DecrementTurnsRemaining();
                     enemy.TemporaryStatModifiers.DecrementTurnsRemaining();
-                    Console.WriteLine($"Player Hitpoints : {player.Hitpoints}\nEnemy Hitpoints: {enemy.Hitpoints}\n\nHit any key to continue");
+                    Console.WriteLine($"Player Hitpoints : {player.Hitpoints}\nEnemy Hitpoints: {enemy.Hitpoints}/{enemy.MaxHitpoints}\n\nHit any key to continue");
                     string? _ = Console.ReadLine();
                     Console.Clear();
                 }
