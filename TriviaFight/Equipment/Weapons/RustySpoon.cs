@@ -1,6 +1,6 @@
 ﻿namespace TriviaFight.Equipment
 {
-    public class RustySpoon : Weapon, IWeapon
+    public class CommonWeapon : Weapon, IWeapon
     {
         public override string Name { get; set; } = "Rusty Spoon";
         public override int DamagePotential { get; set; } = 5;
@@ -16,14 +16,14 @@
 
         public override void SpecialAttack(Player player, Enemy enemy)
         {
-            player.Hitpoints = Math.Min(player.Hitpoints + 5, player.MaxHitpoints);
+            player.Hitpoints = Math.Min(player.Hitpoints + DamagePotential, player.MaxHitpoints);
             Console.WriteLine($"{player} Healed to {player.Hitpoints}/{player.MaxHitpoints}");
             enemy.Hitpoints -= this.DamagePotential;
             Console.WriteLine($"You did {this.DamagePotential} points of damage with {this.Name}!");
         }
         public override void SpecialAttack(Enemy enemy, Player player)
         {
-            enemy.Hitpoints = Math.Min(enemy.Hitpoints + 5, enemy.MaxHitpoints);
+            enemy.Hitpoints = Math.Min(enemy.Hitpoints + DamagePotential, enemy.MaxHitpoints);
             Console.WriteLine($"{enemy} Healed to {enemy.Hitpoints}/{enemy.MaxHitpoints}");
             player.Hitpoints -= this.DamagePotential;
             Console.WriteLine($"{enemy.Name} did {this.DamagePotential} points of damage with {this.Name}!");
