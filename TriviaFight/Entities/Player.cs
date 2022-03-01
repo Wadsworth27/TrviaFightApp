@@ -1,5 +1,6 @@
 ﻿using TriviaFight.Consumables;
 using TriviaFight.Equipment;
+using TriviaFight.Equipment.Weapons;
 
 namespace TriviaFight
 {
@@ -42,8 +43,9 @@ namespace TriviaFight
         public Player(string name)
         {
             Name = name;
-            RustySpoon spoon = new();
+            CommonWeapon spoon = new();
             WeaponList.Add(spoon);
+            for (int i = 0; i < 10; i++)
             Weapon = spoon;
             ClarityPotion rw = new(5);
             CupOfCoffee coffee = new(5);

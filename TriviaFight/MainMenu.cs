@@ -112,7 +112,7 @@ namespace TriviaFight
         {
             List<Weapon> EnemyWeapons = new()
             {
-                new RustySpoon(),
+                new CommonWeapon(),
                 new Nunchaku()
 
             };

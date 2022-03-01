@@ -10,6 +10,11 @@ namespace TriviaFight
         public virtual int SpeedModifier { get; set; }
         public virtual string SpecialAttackDescription { get; set; } = "No Description Avalible";
         public virtual int SpecialMeter { get; set; } = 0;
+        public virtual int Value { get; set; } = 50;
+        public override string ToString()
+        {
+            return this.Name;
+        }
         public virtual void Reset()
         {
 

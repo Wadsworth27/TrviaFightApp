@@ -11,8 +11,8 @@
             get { return Math.Min(specialMeter, 100); }
         }
         public override int SpeedModifier { get; set; } = 10;
-        public override string SpecialAttackDescription { get; set; } =
-            "Heal player by up to 5 points while doing 5 points of damage to enemy";
+        public override string SpecialAttackDescription { get; set; } = "Vampire Strike";
+        public int value = 100;
 
         public override void SpecialAttack(Player player, Enemy enemy)
         {
@@ -59,7 +59,8 @@
         }
         public override string ToString()
         {
-            return this.Name;
+            return $"{this.Name} : \nDamage Potential:{DamagePotential}\nSpeed Modifier:{SpeedModifier}     " +
+                $"Special attack:{SpecialAttackDescription}\n\n";
         }
 
         public override void UseSpecial()

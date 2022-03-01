@@ -86,24 +86,10 @@ namespace TriviaFight
         }
         public virtual void DefeatDrops(Player player)
         {
-            Nunchaku nc = new();
+            Weapon droppedWeapon = CommonWeaponFactory.ProduceWeapon();
             Console.WriteLine("Weapon found!");
             bool existing = false;
-            foreach (Weapon weapon in player.WeaponList)
-            {
-                if (weapon.Name == nc.Name)
-                {
-                    existing = true;
-                }
-            }
-            if (existing)
-            {
-                Console.WriteLine($"You already have {nc}");
-            }
-            else
-            {
-                player.AddWeapon(nc);
-            }
+            player.AddWeapon(droppedWeapon);
             player.Experience += ExperienceReward;
             player.CheckForLevelUp();
             Console.WriteLine($"Player gained {ExperienceReward} Exp");

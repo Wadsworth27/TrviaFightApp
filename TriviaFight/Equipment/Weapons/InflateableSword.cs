@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-namespace TriviaFight.Equipment
+﻿namespace TriviaFight.Equipment
 {
     public class InflateableSword : Weapon, IWeapon
     {
         public Random random = new Random();
-        
+
         public override string Name { get; set; } = "Inflatable Sword";
         public override int DamagePotential { get; set; } = 0;
         private int specialMeter = 0;
@@ -29,7 +24,7 @@ namespace TriviaFight.Equipment
         {
             enemy.Hitpoints -= this.DamagePotential;
             Console.WriteLine($"You pop the sword in {enemy.Name}'s face, doing {this.DamagePotential} points of damage with {this.Name}!");
-            DamagePotential= Random.Shared.Next(1, 15);
+            DamagePotential = Random.Shared.Next(1, 15);
             Console.WriteLine($"You blow up another inflatable sword, with a damage potential of {DamagePotential}");
         }
         public override void SpecialAttack(Enemy enemy, Player player)

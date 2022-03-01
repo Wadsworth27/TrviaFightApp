@@ -69,5 +69,57 @@ namespace TriviaFight.Shop
             }
 
         }
+        public void SellWeapons(Player player)
+        {
+            bool exit = false;
+            while (!exit)
+            {
+                if (player.WeaponList.Count > 1)
+                {
+                    Console.WriteLine($"\nGold Avalible: {player.Gold}\n\n\n");
+                    for (int i = 0; i < player.WeaponList.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}: {player.WeaponList[i]}\n");
+                    }
+
+                    Console.WriteLine($"{player.WeaponList.Count + 1}: Exit\n");
+                    int choice = 0;
+                    while (choice <= 0 | choice > player.WeaponList.Count + 1)
+                    {
+                        int.TryParse(Console.ReadLine(), out choice);
+                    }
+                    if (choice <= player.WeaponList.Count)
+                    {
+
+                        Console.WriteLine($"Do you want to sell {player.WeaponList[choice - 1].Name} for {player.WeaponList[choice - 1].Value}?\n" +
+                            $"1. Yes\n" +
+                            $"2. No");
+                        if (Console.ReadLine() == "1")
+                        {
+                            player.Gold += player.WeaponList[choice - 1].Value;
+                            player.WeaponList.RemoveAt(choice - 1);
+                            Console.WriteLine($"\n\nYou have sold your weapon.\n" +
+                                $"Press any key to continue");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                        }
+
+                    }
+                    else
+                    {
+                        exit = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("You can't sell your only weapon!");
+                    Thread.Sleep(1500);
+                    exit = true;
+                }
+            }
+
+        }
     }
 }
+
