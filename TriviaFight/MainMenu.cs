@@ -6,6 +6,7 @@ namespace TriviaFight
 {
     public static class MainMenu
     {
+        public static Enemy? CurrentBoss { get; set; }
         public static void DisplayHomesceen()
         {
             Console.WriteLine(@"
@@ -50,15 +51,30 @@ namespace TriviaFight
             return player;
 
         }
-        public static int Menu()
+        public static int Menu(Player player)
         {
-
-            Console.WriteLine("Choose your game mode:\n\n" +
-                "1. Challenge a category master. Defeat all masters to become the ultimate champion!\n   Next Master: Bruce Lee    Recomended level: 5\n\n" +
+            CurrentBoss = GetCurrentBoss(player);
+            if (CurrentBoss != null)
+            {
+                Console.WriteLine("Choose your game mode:\n\n" +
+                $"1. Challenge a category master. Defeat all masters to become the ultimate champion!\n   Next Master: {CurrentBoss.Name}    Recomended level: {CurrentBoss.SuggestedLevel}\n\n" +
                 "2. Trivia Challenge - 10 question general knowledge trivia. Earn gold!\n" +
                 "3. Random Battle - Battle a random opponent from history to gain experience and find items!\n" +
                 "4. Shop - Find new items and power ups\n" +
                 "5. Change Weapons\n\n");
+            }
+            else
+            {
+                CurrentBoss = GetRandomBoss();
+                Console.WriteLine("Choose your game mode:\n\n" +
+                $"1. You are already the ultimate chamnpion! This champion wants to play again though\n   Next Master: {CurrentBoss.Name}    Recomended level: {CurrentBoss.SuggestedLevel}\n\n" +
+                "2. Trivia Challenge - 10 question general knowledge trivia. Earn gold!\n" +
+                "3. Random Battle - Battle a random opponent from history to gain experience and find items!\n" +
+                "4. Shop - Find new items and power ups\n" +
+                "5. Change Weapons\n\n");
+            }
+
+            
             while (true)
             {
                 string? choice = Console.ReadLine();
@@ -175,6 +191,40 @@ namespace TriviaFight
 
             }
             return enemy;
+        }
+        public static Enemy? GetCurrentBoss(Player player)
+        {
+            List<Enemy> AllBosses = new()
+            {
+                new BruceLee(),
+                new BrettFavre(),
+                new AlbertEinstein()
+            };
+            foreach (Enemy boss in AllBosses)
+            {
+                bool enemyDefeated = false;
+                foreach (string name in player.BossesDefeated)
+                {
+                    if (boss.Name == name)
+                    {
+                        enemyDefeated = true;
+                    }
+                }
+                if (!enemyDefeated)
+                {
+                    return boss;
+                }
+            }
+            return null;
+        }
+        public static Enemy GetRandomBoss()
+        {
+            List<Enemy> AllBosses = new()
+            {
+                new BruceLee(),
+                new BrettFavre()
+            };
+            return AllBosses[Random.Shared.Next(AllBosses.Count)];
         }
     }
 }

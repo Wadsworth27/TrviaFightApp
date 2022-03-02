@@ -8,7 +8,7 @@
             bool gameon = true;
             while (gameon)
             {
-                QuestionSet questionSet = this.GetQuestions();
+                QuestionSet questionSet = this.GetQuestions(enemy.TriviaURL);
                 foreach (Question question in questionSet.Questions)
                 {
                     while (player.Stamina < 100)
@@ -58,9 +58,13 @@
                         AnswerSuccess(mode, player, enemy);
                         if (enemy.Hitpoints <= 0)
                         {
-                            Console.WriteLine("You have defeated the enemy!");
+                            Console.WriteLine($"You have defeated {enemy.Name}!");
                             gameon = false;
                             enemy.DefeatDrops(player);
+                            if (!player.BossesDefeated.Contains(enemy.Name))
+                            {
+                                player.BossesDefeated.Add(enemy.Name);
+                            }
                             break;
                         }
                     }

@@ -29,6 +29,7 @@ namespace TriviaFight
                 speed = value;
             }
         }
+        public List<string> BossesDefeated { get; set; } = new();
         public int Stamina { get; set; } = 0;
         public int Level { get; set; } = 1;
         private Dictionary<int, int> LevelExperienceRequired = new Dictionary<int, int>

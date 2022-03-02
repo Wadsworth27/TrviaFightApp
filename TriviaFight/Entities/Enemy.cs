@@ -9,6 +9,7 @@ namespace TriviaFight
         public virtual int Hitpoints { get; set; } = 1;
         public virtual int MaxHitpoints { get; set; } = 25;
         private int _hitPercentage = 100;
+        public virtual string TriviaURL { get; set; } = "https://opentdb.com/api.php?amount=10&type=multiple";
         public virtual int HitPercentage
         {
             get
@@ -20,6 +21,7 @@ namespace TriviaFight
                 _hitPercentage = value;
             }
         }
+        public virtual int SuggestedLevel { get; set; } = 5;
         public virtual int DefendPercentage { get; set; } = 20;
         public virtual int Stamina { get; set; } = 0;
         public virtual int ExperienceReward { get; set; } = 100;

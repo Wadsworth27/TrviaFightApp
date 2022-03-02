@@ -29,7 +29,7 @@ namespace TriviaFight.Shop
             else if (input == "3")
             {
                 Console.Clear();
-                MainMenu.GameHandler(MainMenu.Menu(), player);
+                MainMenu.GameHandler(MainMenu.Menu(player), player);
             } else
             {
                 Console.Clear();

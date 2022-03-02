@@ -22,7 +22,7 @@ class Program
         while (gameon)
         {
             player.DisplayInfo();
-            MainMenu.GameHandler(MainMenu.Menu(), player);
+            MainMenu.GameHandler(MainMenu.Menu(player), player);
         }
     }
 
