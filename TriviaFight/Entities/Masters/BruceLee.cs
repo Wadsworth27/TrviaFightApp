@@ -7,8 +7,8 @@ namespace TriviaFight.Masters
         Random random = new();
 
         public override string Name { get; set; } = "Bruce Lee";
-        public override int Hitpoints { get; set; } = 100;
-        public override int MaxHitpoints { get; set; } = 100;
+        public override int Hitpoints { get; set; } = 30;
+        public override int MaxHitpoints { get; set; } = 30;
         public override int HitPercentage { get; set; } = 70;
         public override int Stamina { get; set; } = 0;
         public override int DefendPercentage { get; set; } = 35;

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj": {}
+    "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\APiHandler\\APiHandler.csproj": {}
   },
   "projects": {
-    "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj": {
+    "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\APiHandler\\APiHandler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj",
+        "projectUniqueName": "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\APiHandler\\APiHandler.csproj",
         "projectName": "APiHandler",
-        "projectPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\APiHandler.csproj",
-        "packagesPath": "C:\\Users\\stwad\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\stwad\\Documents\\TirviaFightSolution\\APiHandler\\obj\\",
+        "projectPath": "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\APiHandler\\APiHandler.csproj",
+        "packagesPath": "C:\\Users\\Steve\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Steve\\source\\repos\\TriviaFight\\TrviaFightApp\\APiHandler\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\stwad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

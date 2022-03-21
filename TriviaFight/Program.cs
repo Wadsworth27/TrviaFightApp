@@ -7,7 +7,6 @@ class Program
 
         MainMenu.DisplayHomesceen();
         string NeworLoad = MainMenu.NewOrLoadGame();
-        Console.WriteLine("&#039;");
 
         if (NeworLoad == "new")
         {

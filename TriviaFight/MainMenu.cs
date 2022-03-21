@@ -128,7 +128,7 @@ namespace TriviaFight
         {
             List<Weapon> EnemyWeapons = new()
             {
-                new CommonWeapon(),
+                CommonWeaponFactory.ProduceWeapon(),
                 new Nunchaku()
 
             };
@@ -156,8 +156,8 @@ namespace TriviaFight
                 case "1":
 
                     enemy.Name = Names[random.Next(Names.Count)];
-                    enemy.MaxHitpoints = 25;
-                    enemy.Hitpoints = 25;
+                    enemy.MaxHitpoints = 10;
+                    enemy.Hitpoints = 10;
                     enemy.Speed = 50;
                     enemy.Weapon = EnemyWeapons[random.Next(EnemyWeapons.Count)];
                     Console.Clear();
@@ -167,8 +167,8 @@ namespace TriviaFight
                 case "2":
 
                     enemy.Name = Names[random.Next(Names.Count)];
-                    enemy.MaxHitpoints = 50;
-                    enemy.Hitpoints = 50;
+                    enemy.MaxHitpoints = 25;
+                    enemy.Hitpoints = 25;
                     enemy.Speed = 75;
                     enemy.Weapon = EnemyWeapons[random.Next(EnemyWeapons.Count)];
                     Console.Clear();
@@ -178,8 +178,8 @@ namespace TriviaFight
                 case "3":
 
                     enemy.Name = Names[random.Next(Names.Count)];
-                    enemy.MaxHitpoints = 100;
-                    enemy.Hitpoints = 100;
+                    enemy.MaxHitpoints = 50;
+                    enemy.Hitpoints = 50;
                     enemy.Speed = 90;
                     enemy.Weapon = EnemyWeapons[random.Next(EnemyWeapons.Count)];
                     Console.Clear();

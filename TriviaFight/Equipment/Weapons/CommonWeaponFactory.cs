@@ -15,7 +15,7 @@
         {
             CommonWeapon weapon = new();
             weapon.SpeedModifier = Random.Shared.Next(-25, 25);
-            weapon.DamagePotential = Random.Shared.Next(3, 8);
+            weapon.DamagePotential = Random.Shared.Next(3, 12);
             weapon.Name = CommonWeaponNames[Random.Shared.Next(CommonWeaponNames.Count)];
             return weapon;
         }

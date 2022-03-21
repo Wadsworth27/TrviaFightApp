@@ -7,8 +7,8 @@ namespace TriviaFight
         readonly Random random = new();
         public virtual string Name { get; set; } = "Enemy";
         public virtual int Hitpoints { get; set; } = 1;
-        public virtual int MaxHitpoints { get; set; } = 25;
-        private int _hitPercentage = 100;
+        public virtual int MaxHitpoints { get; set; } = 10;
+        private int _hitPercentage = 55;
         public virtual string TriviaURL { get; set; } = "https://opentdb.com/api.php?amount=10&type=multiple";
         public virtual int HitPercentage
         {
